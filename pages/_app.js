@@ -63,8 +63,9 @@ function App({ Component, ...rest }) {
                   name='viewport'
                   content='initial-scale=1, width=device-width'
                 />
+                <link rel="icon" href="/assets/images/favicon.ico" />
                 <meta name="description" content="The Bear and Bull Index provides a comprehensive solution to the challenges faced in the cryptocurrency market. Through LunarCrush’s AI-driven social insights, simplified analysis, and community engagement, it empowers investors to make informed decisions, navigate market volatility, and stay ahead in the ever-evolving world of cryptocurrencies." />
-                <title>Bear and Bull Index for Crypto: Decoding Crypto Trends with AI-Driven Insights</title>
+                <title>Bear and Bull Index for Crypto</title>
               </Head>
               <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -84,7 +85,7 @@ function App({ Component, ...rest }) {
         themeMode='dark'
         themeVariables={{
           "--w3m-font-family": "Roboto, sans-serif",
-          "--w3m-accent-color": "#297373",
+          "--w3m-accent-color": "#f5900c",
         }}
       />
     </>
