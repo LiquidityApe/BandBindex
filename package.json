@@ -1,8 +1,8 @@
 {
-  "name": "bandb",
-  "version": "0.1.0",
+  "name": "bandbindex",
+  "version": "1.0.3",
   "private": true,
-  "homepage": "https://Ovodo.github.io/bandb/",
+  "homepage": "https://github.com/LiquidityApe/BandBindex",
   "scripts": {
     "deploy": "next build  && npx gh-pages -d .next",
     "dev": "next dev",
@@ -58,5 +58,20 @@
     "viem": "^1.4.2",
     "wagmi": "^1.3.9",
     "web3": "^4.0.3"
-  }
+  },
+  "description": "BandBindex",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "BandBindex"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "LiquidityApe",
+  "license": "UNLICENSED"
 }
