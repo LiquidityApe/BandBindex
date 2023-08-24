@@ -3,7 +3,7 @@ import { google } from "googleapis";
 // import keys from "../../key";
 
 export default async function (req, res) {
-  await useCors("https://bandbindex.com/")(req, res);
+  await useCors("https://bandbindex.com")(req, res);
 
   try {
     const client = new google.auth.JWT(

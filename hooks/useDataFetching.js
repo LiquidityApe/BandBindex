@@ -18,7 +18,7 @@ const useDataFetching = () => {
   useEffect(() => {
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? "https://bandbindex.com/"
+        ? "https://bandbindex.com"
         : "http://localhost:3000";
     const APIkey = " h569uy3tkd6hfydgfzz8q74fd6lkbkpvjv0m4r85e";
 
