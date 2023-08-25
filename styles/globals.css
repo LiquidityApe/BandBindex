@@ -306,7 +306,7 @@ ul a:hover {
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  font: bold 16px sans-serif;
+  font: bold 16px "Roboto";
   padding: 55px 50px;
 }
 
@@ -475,7 +475,7 @@ ul a:hover {
 
 @media (max-width: 880px) {
   .footer-distributed {
-    font: bold 14px sans-serif;
+    font: bold 14px "Roboto";
   }
 
   .footer-distributed .footer-left,
