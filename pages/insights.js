@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import InsightsIcon from '@mui/icons-material/Insights';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import WhatshotIcon from "@mui/icons-material/Whatshot";
+import RocketIcon from '@mui/icons-material/Rocket';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import BackToTopButton from "@/Components/BackToTopButton";
 import { useSelector } from "react-redux";
@@ -183,15 +183,12 @@ const Insights = () => {
                   /> Invest in Knowledge:</strong> The more you know, the further you&apos;ll go. Grow your understanding, enhance your skills, and ensure long-term growth in the crypto space.
 </p><br></br>
     <p style={{ ...styles.paragraph, textAlign: 'center', fontSize: '18px', marginTop: '20px' }}>
-      Ready to step into a world of data-driven success? For just $1 a month, you&apos;ll unlock a treasure trove of insights
-      that could transform the way you conquer the crypto market. Say yes to smarter decisions, more confident moves,
-      and a future where you&apos;re ahead of the game. Subscribe to Bear and Bull Index Insights today! <RocketLaunchIcon
+    <RocketIcon
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
-                    />                    <WhatshotIcon
-                    color='white'
-                    style={{ fontSize: 25, color: "#F5900C" }}
-                  />
+                    /> Ready to step into a world of data-driven success? For just $1 a month, you&apos;ll unlock a treasure trove of insights
+      that could transform the way you conquer the crypto market. Say yes to smarter decisions, more confident moves,
+      and a future where you&apos;re ahead of the game. Subscribe to Bear and Bull Index Insights today!              
     </p>
 
 <div style={styles.buttonWrapper}>
