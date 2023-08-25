@@ -9,7 +9,7 @@ const AppSlice = createSlice({
   initialState,
   reducers: {
     setTheme(state, action) {
-      state.theme = action.payload;
+      state.theme = !state.theme
     },
   },
 });
