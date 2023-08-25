@@ -5,7 +5,7 @@ export const initialState = {
   User: "",
   balance: 0,
   Claimed: false,
-  token: "0xFaaBD9b1E4FDE7C42BF10a8165b21D9Eb19141a4",
+  token: "0x1Fa171C036AB2A37Ece104AF47c4c32fc5e67CC4",
   dailyClaim: 10,
 };
 

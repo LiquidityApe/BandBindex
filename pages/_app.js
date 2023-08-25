@@ -79,7 +79,7 @@ function App({ Component, ...rest }) {
         </GoogleOAuthProvider>
       </WagmiConfig>
       <Web3Modal
-        tokenContracts={{ 97: "0xFaaBD9b1E4FDE7C42BF10a8165b21D9Eb19141a4" }}
+        tokenContracts={{ 56: "0x1Fa171C036AB2A37Ece104AF47c4c32fc5e67CC4" }}
         projectId={projectId}
         ethereumClient={ethereumClient}
         themeMode='dark'

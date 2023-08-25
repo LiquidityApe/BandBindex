@@ -89,6 +89,7 @@ const Navbar = ({ children }) => {
   const { data, isError, isLoading } = useBalance({
     address: address,
     token: token,
+    
   });
 
   const sendWalletAddress = async () => {
@@ -115,18 +116,21 @@ const Navbar = ({ children }) => {
   };
   useEffect(() => {
     console.log(isConnecting, isDisconnected, isError);
-    if (data) {
-      dispatch(updateAddress(address));
+    console.log("data",data,"isLoading:",isLoading);
+    if (data && !isLoading) {
       dispatch(setBalance(data?.formatted));
     } else {
-      dispatch(updateAddress(""));
       dispatch(setBalance(0));
     }
-  }, [data]);
+  }, [data,isLoading]);
   useEffect(() => {
     console.log("address:", address);
     if (address) {
+      dispatch(updateAddress(address));
       sendWalletAddress();
+    }else{
+      
+      dispatch(updateAddress(""));
     }
   }, [address]);
 
@@ -285,7 +289,7 @@ const Navbar = ({ children }) => {
                   color='white'
                   style={{ fontSize: 25, color: "#F5900C" }}
                 />
-              </Link> */}
+              </Link> */} 
                 <Web3Button
                   // className='bg-white'
                   // style={{ backgroundColor: "white" }}
