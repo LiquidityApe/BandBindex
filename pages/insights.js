@@ -67,7 +67,7 @@ const Insights = () => (
                       style={{ fontSize: 25, color: "#F5900C" }}
                     />  Unveil the Crypto Pulse with Daily Precision:</h2>
     <p>
-      Our Comprehensive Daily Data Overview Report isn't just data; it's your compass in the volatile sea of cryptocurrencies.
+      Our Comprehensive Daily Data Overview Report isn&apos;t just data; it&apos;s your compass in the volatile sea of cryptocurrencies.
       Witness the market sentiment and trends unfold before your eyes, giving you the upper hand in an ever-evolving world.
     </p>
      <h2 style={styles.subHeading}><SearchIcon
@@ -76,7 +76,7 @@ const Insights = () => (
                     /> Decode the Numbers, Unleash the Power:</h2>
     <p>
       Understand the daily reading like never before. No more scratching your head over cryptic indicators.
-      We break it down into plain English so you can grasp the insights with ease. But that's not all – delve into
+      We break it down into plain English so you can grasp the insights with ease. But that&apos;s not all – delve into
       the historical data of the past 7 days and unearth patterns that could be your key to success.
     </p>
      <h2 style={styles.subHeading}><InsightsIcon
@@ -84,7 +84,7 @@ const Insights = () => (
                       style={{ fontSize: 25, color: "#F5900C" }}
                     />  Predict Tomorrow, Today:</h2>
     <p>
-      Wouldn't it be amazing to predict the future? Well, our Predictive Analysis isn't quite magic, but it's pretty close.
+      Wouldn&apos;t it be amazing to predict the future? Well, our Predictive Analysis isn&apos;t quite magic, but it&apos;s pretty close.
       Utilizing historical trends, we let you peek into where the crypto market might be heading next. Prepare to outsmart the market!
     </p>
      <h2 style={styles.subHeading}><LightbulbIcon
@@ -93,23 +93,23 @@ const Insights = () => (
                     />  Access the Minds of Experts for Just $1 a Month:</h2>
     <p>
       You heard that right – unlimited access to the Bear and Bull Index AI-Report for only $1 a month!
-      That's a cup of coffee's worth for insights that could change your crypto game.
+      That&apos;s a cup of coffee&apos;s worth for insights that could change your crypto game.
     </p>
     <h1 style={styles.heading}>   <JoinInnerIcon
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
-                    />   Why Join the Exclusive Circle of Subscribers? Here's Why:</h1>
+                    />   Why Join the Exclusive Circle of Subscribers? Here&apos;s Why:</h1>
     <p>
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Stay Informed:</strong> Don't just keep up; stay ahead! Receive consolidated insights that illuminate the latest market trends, sentiment shifts, and opportunities that could shape your next move.
+                  /> Stay Informed:</strong> Don&apos;t just keep up; stay ahead! Receive consolidated insights that illuminate the latest market trends, sentiment shifts, and opportunities that could shape your next move.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Save Time, Trade Smart:</strong> Let's face it – your time is precious. Skip the data-hunting marathon and get the juicy bits delivered straight to your inbox. Your time is better spent making strategic moves.
+                  /> Save Time, Trade Smart:</strong> Let&apos;s face it – your time is precious. Skip the data-hunting marathon and get the juicy bits delivered straight to your inbox. Your time is better spent making strategic moves.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
@@ -121,19 +121,19 @@ const Insights = () => (
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Be the Market Whisperer:</strong> Ever wished you could predict the market's next dance move? With our predictive insights, you'll be dancing circles around uncertainty and positioning yourself for profit.
+                  /> Be the Market Whisperer:</strong> Ever wished you could predict the market&apos;s next dance move? With our predictive insights, you&apos;ll be dancing circles around uncertainty and positioning yourself for profit.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Expert Analysis at Your Fingertips:</strong> Complex indicators explained in simple terms. You don't have to be a market expert; our analysis does the heavy lifting so you can act confidently.
+                  /> Expert Analysis at Your Fingertips:</strong> Complex indicators explained in simple terms. You don&apos;t have to be a market expert; our analysis does the heavy lifting so you can act confidently.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Protect Your Investments:</strong> Risk management isn't just a buzzword here. Understand market sentiment and potential risks, and fortify your investments against market storms.
+                  /> Protect Your Investments:</strong> Risk management isn&apos;t just a buzzword here. Understand market sentiment and potential risks, and fortify your investments against market storms.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
@@ -145,7 +145,7 @@ const Insights = () => (
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Confidence, Not Chaos:</strong> Say goodbye to emotional trading. Welcome a rational approach that's backed by data and encourages confident actions.
+                  /> Confidence, Not Chaos:</strong> Say goodbye to emotional trading. Welcome a rational approach that&apos;s backed by data and encourages confident actions.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
@@ -163,7 +163,7 @@ const Insights = () => (
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Join the Inner Circle:</strong> Gain an edge that's hard to beat. While others second-guess, you're making informed decisions backed by expert advice.
+                  /> Join the Inner Circle:</strong> Gain an edge that&apos;s hard to beat. While others second-guess, you&apos;re making informed decisions backed by expert advice.
 </p><br></br>
 <p>
     <strong><CheckBoxIcon
@@ -175,12 +175,12 @@ const Insights = () => (
     <strong><CheckBoxIcon
                     color='white'
                     style={{ fontSize: 25, color: "#F5900C" }}
-                  /> Invest in Knowledge:</strong> The more you know, the further you'll go. Grow your understanding, enhance your skills, and ensure long-term growth in the crypto space.
+                  /> Invest in Knowledge:</strong> The more you know, the further you&apos;ll go. Grow your understanding, enhance your skills, and ensure long-term growth in the crypto space.
 </p><br></br>
     <p style={{ ...styles.paragraph, textAlign: 'center', fontSize: '18px', marginTop: '20px' }}>
-      Ready to step into a world of data-driven success? For just $1 a month, you'll unlock a treasure trove of insights
+      Ready to step into a world of data-driven success? For just $1 a month, you&apos;ll unlock a treasure trove of insights
       that could transform the way you conquer the crypto market. Say yes to smarter decisions, more confident moves,
-      and a future where you're ahead of the game. Subscribe to Bear and Bull Index Insights today! <RocketLaunchIcon
+      and a future where you&apos;re ahead of the game. Subscribe to Bear and Bull Index Insights today! <RocketLaunchIcon
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
                     />                    <WhatshotIcon
