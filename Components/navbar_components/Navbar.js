@@ -232,10 +232,9 @@ const Navbar = ({ children }) => {
                   }}
                   onClick={() => {
                     hideMenu();
-                    handleClick();
                   }}
                 >
-                  <Link legacyBehavior href='#soon'>
+                  <Link legacyBehavior href='/insights'>
                     <a>{"Insights"}</a>
                   </Link>
                 </motion.li>
