@@ -10,6 +10,7 @@ import { setClaimed, setDailyClaim } from "../store/reducers/AppReducer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
+import RocketIcon from '@mui/icons-material/Rocket';
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -177,7 +178,7 @@ const Claim = (props) => {
               <p className='mt-4'>
                 Nice! You can pick up{" "}
                 <span className='text-teal-600 font-bold'>{dailyClaimed}</span>{" "}
-                $INDEX 📈 next time you log into BandBindex.
+                $INDEX 🚀 next time you log into BandBindex.
               </p>
 
               <p className='mb-2'>
