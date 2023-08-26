@@ -10,6 +10,7 @@ import { setClaimed, setDailyClaim } from "../store/reducers/AppReducer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
+import RocketIcon from '@mui/icons-material/Rocket';
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -174,20 +175,20 @@ const Claim = (props) => {
                   );
                 })}
               </div>
-              <p className='mt-4'>
+              <p className='mt-4 text-base'>
                 Nice! You can pick up{" "}
                 <span className='text-teal-600 font-bold'>{dailyClaimed}</span>{" "}
-                $INDEX 📈 next time you log into BandBindex.
+                $INDEX 🚀 next time you log into BandBindex.
               </p>
 
-              <p className='mb-2'>
+              <p className='mb-2 text-base'>
                 Log in 7 days in a row, your rewards will grow.
               </p>
 
               <button
                 onClick={onClaim}
                 disabled={Claimed}
-                className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100'
+                className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100 text-base'
               >
                 {Claimed ? (
                   <>
