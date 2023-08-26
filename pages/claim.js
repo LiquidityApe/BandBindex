@@ -175,20 +175,20 @@ const Claim = (props) => {
                   );
                 })}
               </div>
-              <p className='mt-4 text-base'>
+              <p className='mt-4'>
                 Nice! You can pick up{" "}
                 <span className='text-teal-600 font-bold'>{dailyClaimed}</span>{" "}
                 $INDEX 🚀 next time you log into BandBindex.
               </p>
 
-              <p className='mb-2 text-base'>
+              <p className='mb-2'>
                 Log in 7 days in a row, your rewards will grow.
               </p>
 
               <button
                 onClick={onClaim}
                 disabled={Claimed}
-                className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100 text-base'
+                className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100'
               >
                 {Claimed ? (
                   <>
