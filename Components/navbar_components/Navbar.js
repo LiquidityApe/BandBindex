@@ -115,8 +115,6 @@ const Navbar = ({ children }) => {
     }
   };
   useEffect(() => {
-    console.log(isConnecting, isDisconnected, isError);
-    console.log("data",data,"isLoading:",isLoading);
     if (data && !isLoading) {
       dispatch(setBalance(data?.formatted));
     } else {
@@ -124,7 +122,6 @@ const Navbar = ({ children }) => {
     }
   }, [data,isLoading]);
   useEffect(() => {
-    console.log("address:", address);
     if (address) {
       dispatch(updateAddress(address));
       sendWalletAddress();

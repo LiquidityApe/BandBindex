@@ -57,20 +57,22 @@ const Claim = (props) => {
     // Get the current date and set the time to 00:00:00.000
     let now = new Date();
     now.setHours(0, 0, 0, 0);
-
-    if (!lastClaimed) {
-      dispatch(setClaimed(false));
-      return;
-    }
-
     // Assuming lastClaim is a Date object, set the time to 00:00:00.000
+    
     let lastClaimDate = new Date(lastClaimed);
     lastClaimDate.setHours(0, 0, 0, 0);
     // console.log(now.getTime() > lastClaimDate.getTime());
-    now.getTime() > lastClaimDate.getTime()
+    now.getTime() >  lastClaimDate.getTime()
       ? dispatch(setClaimed(false))
       : dispatch(setClaimed(true));
-  }, [lastClaimed]);
+
+    if(points == null){
+      dispatch(setClaimed(false))
+      return;
+    }
+   
+
+  }, [lastClaimed]); 
 
   const updatePoints = () => {
     const address = User;
@@ -78,7 +80,7 @@ const Claim = (props) => {
     // Define the baseUrl
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? "https://bandbindex.com/"
+        ? "https://bandbindex.com"
         : "http://localhost:3000";
 
     // Make a POST request to /api/points with the address in the body
@@ -86,11 +88,6 @@ const Claim = (props) => {
       .post(
         `${baseUrl}/api/points`,
         { address }
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       )
       .then((res) => {
         const claimData = res.data;
@@ -164,7 +161,7 @@ const Claim = (props) => {
       className='rotating-image' // Apply the CSS class here
     />
   </center>
-  <div className={textTheme}>Rewards: You have {points} Index</div>
+  <div className={textTheme}>Rewards: You have {points||0} Index</div>
 </motion.h1>
             <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
               <h2 className='mb-5'>{props.title}</h2>

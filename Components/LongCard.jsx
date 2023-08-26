@@ -1,10 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export default function LongCard({ title }) {
   const { theme } = useSelector((state) => state.Theme);
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
+  const textTheme2 = !theme ? "text-slate-950" : "text-slate-100";
   const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
+  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-950";
 
   const text1 = (
     <div className={textTheme}>
@@ -250,14 +253,20 @@ export default function LongCard({ title }) {
 
   return (
     <div
-      className={`${backgroundTheme} shadow-md ${
+      className={`${backgroundTheme} relative shadow-md ${
         theme ? "shadow-[#757780]" : "shadow-slate-800"
       } p-5 w-[90vw] md:w-[87vw] lg:w-[92%] shadow-md rounded-sm`}
     >
-      <h1 className={`${textTheme} text-2xl font-bold mb-4`}>
+      <div className={`absolute left-1 flex justify-between top-1 w-[99.5%] px-2 py-1  ${backgroundTheme2} font-semibold mb-4`}>
+        <h1 className={`${textTheme2}  text-2xl  font-semibold`}>
         {title}
       </h1>
-      <div className={`text-lg`}>
+      {title === "Why Bear & Bull Index?"&&<div className="flex">
+        <PlayArrowIcon style={{color:"white"}} color="white"/>
+        <h1 className={`${textTheme2}  text-2xl  font-semibold`}>Watch Video</h1>
+        </div>}
+      </div>
+      <div className={`text-lg mt-12`}>
         {title === "Why Bear & Bull Index?"
           ? text1
           : title === "Data Sources"
