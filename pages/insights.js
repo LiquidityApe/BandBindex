@@ -61,7 +61,7 @@ const Insights = () => {
     <h1 style={styles.heading}>                    <RocketLaunchIcon
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
-                    /> Introducing Bear and Bull Index Insights: Your Secret Weapon in Crypto Success!</h1>
+                    /> Introducing Bear and Bull Index Insights: Your Secret Weapon to Crypto Success!</h1>
     <p>
       Tired of deciphering the cryptic signals of the crypto market? Say hello to Bear and Bull Index Insights,
       your AI-powered ally that unveils the hidden mysteries of the cryptocurrency landscape. Dive into a world
