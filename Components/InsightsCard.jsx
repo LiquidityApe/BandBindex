@@ -18,7 +18,7 @@ const InsightsCard = ({
   const textTheme = !theme ? "text-slate-950" : "text-slate-50";
   const textTheme2 = theme ? "text-slate-950" : "text-slate-300";
   const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
-  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-900";
+  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-[#0A0D0D]";
   const todayRSI = !today
     ? "..."
     : today <= 30

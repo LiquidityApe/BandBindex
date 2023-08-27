@@ -7,7 +7,7 @@ export default function LongCard({ title }) {
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const textTheme2 = !theme ? "text-slate-950" : "text-slate-100";
   const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
-  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-900";
+  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-[#0A0D0D]";
 
   const text1 = (
     <div className={textTheme}>
