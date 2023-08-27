@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 export default function LongCard({ title }) {
   const { theme } = useSelector((state) => state.Theme);
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const textTheme2 = !theme ? "text-slate-950" : "text-slate-100";
   const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
-  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-950";
+  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-900";
 
   const text1 = (
     <div className={textTheme}>
@@ -258,15 +258,21 @@ export default function LongCard({ title }) {
       } p-5 w-[90vw] md:w-[87vw] lg:w-[92%] shadow-md rounded-sm`}
     >
       <div className={`absolute left-1 flex justify-between top-1 w-[99.5%] px-2 py-1  ${backgroundTheme2} font-semibold mb-4`}>
-        <h1 className={`${textTheme2}  text-2xl  font-semibold`}>
+        <h1 className={`${textTheme2}  text-lg  font-semibold`}>
         {title}
       </h1>
-      {title === "Why Bear & Bull Index?"&&<div className="flex">
-        <PlayArrowIcon style={{color:"white"}} color="white"/>
-        <h1 className={`${textTheme2}  text-2xl  font-semibold`}>Watch Video</h1>
-        </div>}
+      {title === "Why Bear & Bull Index?"&&<div className="ml-2 flex items-center">
+        <a
+          href="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Foa9jgybdEKsfdL8UhZNe%2Fuploads%2FDeapW9vpf5E5PDSavGDU%2FBear%20and%20Bull%20Index%20Launch%20Video.mp4?alt=media&token=fdb9dc13-b7dd-4a90-a19f-1350434c61e3"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#F5900C" }}
+        >
+          <PlayCircleOutlineIcon className={`${textTheme2}`} />
+        </a>
+      </div>}
       </div>
-      <div className={`text-lg mt-12`}>
+      <div className={`text-lg  mt-12`}>
         {title === "Why Bear & Bull Index?"
           ? text1
           : title === "Data Sources"
