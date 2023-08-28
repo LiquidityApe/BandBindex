@@ -1,35 +1,23 @@
 import React, { useEffect, useRef } from "react";
-import { GiWallet } from "react-icons/gi";
-import { IoMdCart } from "react-icons/io";
-import { FaUserAlt } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
-import { HiOutlineMenu, HiUser, HiSparkles } from "react-icons/hi";
-import { TiTick } from "react-icons/ti";
+import { HiOutlineMenu} from "react-icons/hi";
 import { useState } from "react";
 import Link from "next/link";
-import Router, { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { motion, useAnimation } from "framer-motion";
-import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { motion} from "framer-motion";
 import NightModeIcon from "@mui/icons-material/Nightlight";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import ShopIcon from '@mui/icons-material/Shop';
-import AssessmentIcon from "@mui/icons-material/Assessment";
+import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
 import OutsideClickHandler from "react-outside-click-handler";
-import Web3 from "web3";
 import Swal from "sweetalert";
-import { useWeb3Modal } from "@web3modal/react";
 
 // import { ethers } from 'ethers';
-import DrawingComponent from "../DrawingComponent";
 import Image from "next/image";
 import { setTheme } from "@/store/reducers/Theme";
 import { Web3Button } from "@web3modal/react";
 import { useAccount, useBalance } from "wagmi";
 import {
   updateAddress,
-  setToken,
   setBalance,
 } from "@/store/reducers/AppReducer";
 import axios from "axios";
@@ -38,7 +26,6 @@ const Navbar = ({ children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showmenu, setShowmenu] = useState(false);
   const dispatch = useDispatch();
-  const router = useRouter();
   const { theme } = useSelector((state) => state.Theme);
   const { User, token } = useSelector((state) => state.App);
   // const textTheme = theme ? "text-slate-950" : "text-slate-400";
@@ -53,8 +40,6 @@ const Navbar = ({ children }) => {
   };
 
   const textTheme = !theme ? "text-slate-950" : "text-slate-300";
-
-  const colorTheme = !theme ? "bg-white" : "bg-slate-950";
 
   // Define the SweetAlert configuration
   const comingSoonAlertConfig = {
@@ -212,14 +197,16 @@ const Navbar = ({ children }) => {
                     stiffness: 350,
                     duration: 0.1,
                   }}
-                  onClick={() => {
-                    hideMenu();
-                    handleClick();
-                  }}
                 >
-                  <Link legacyBehavior href='#soon'>
-                    <a>{"Cryptocurrencies"}</a>
-                  </Link>
+ <Link legacyBehavior href=''>
+  <a onClick={(e) => {
+    e.preventDefault();
+    hideMenu();
+    handleClick();
+  }}>
+    {"Cryptocurrencies"}
+  </a>
+</Link>
                 </motion.li>
                 <motion.li
                   whileHover={{ scale: 1.2 }}
@@ -248,7 +235,7 @@ const Navbar = ({ children }) => {
                     href={User == "" ? "#soon" : "/claim"}
                     style={{ fontSize: 25, color: "#F5900C" }}
                   >
-                    <ShopIcon
+                    <DiamondOutlinedIcon
                       style={{
                         fontSize: 25,
                         color: "#F5900C",

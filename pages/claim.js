@@ -10,7 +10,6 @@ import { setClaimed, setDailyClaim } from "../store/reducers/AppReducer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
-import RocketIcon from '@mui/icons-material/Rocket';
 
 const Claim = (props) => {
   const dispatch = useDispatch();
