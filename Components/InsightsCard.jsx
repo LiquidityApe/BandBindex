@@ -17,8 +17,8 @@ const InsightsCard = ({
   const [showTooltip, setShowTooltip] = useState(false);
   const textTheme = !theme ? "text-slate-950" : "text-slate-50";
   const textTheme2 = theme ? "text-slate-950" : "text-slate-300";
-  const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
-  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-900";
+  const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-950";
+  const backgroundTheme2 = !theme ? "bg-slate-50" : "bg-slate-950";
   const todayRSI = !today
     ? "..."
     : today <= 30

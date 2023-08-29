@@ -21,7 +21,7 @@ const Insights = () => {
   const { theme } = useSelector((state) => state.Theme);
 
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
-  const backgroundTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
+  const backgroundTheme = theme ? "bg-gradient-to-l from-[#F5900c] to-white" : "bg-slate-950";
 
 
   const styles = {

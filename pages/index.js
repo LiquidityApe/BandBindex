@@ -122,6 +122,7 @@ export default function Home() {
   }
 
   return (
+    
     <div className='flex items-center justify-center h-full flex-1'>
       <main className={` ${colorTheme} relative flex flex-col`}>
         <div className='flex w-full justify-between  h-[11vh] md:h-[14vh] lg:h-[18vh]'>
