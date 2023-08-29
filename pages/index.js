@@ -1,9 +1,6 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 
 import LockIcon from "@mui/icons-material/Lock";
@@ -20,11 +17,9 @@ import MarketSentiment from "@/Components/MarketSentiment";
 import CountdownTimer from "@/Components/CountdownTimer";
 import LongCard from "@/Components/LongCard";
 import BackToTopButton from "@/Components/BackToTopButton";
-import { useRouter } from "next/router";
 import useDataFetching from "@/hooks/useDataFetching";
 import Footer from "@/Components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString("default", { month: "short" }).toUpperCase();
@@ -32,14 +27,12 @@ const year = date.getFullYear();
 const todaysDate = `${day} ${month} ${year}`;
 
 export default function Home() {
-  const router = useRouter();
   const { theme } = useSelector((state) => state.Theme);
   const { balance } = useSelector((state) => state.App);
   const { data, loading, error } = useDataFetching();
   const mobile = useScreenWidth() < 788;
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const colorTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
-  const isFocused = router.pathname === "/index";
   // console.log("sentiment", data.sentiment);
 
   //function to interpolate data for the semi-circle guage
@@ -137,7 +130,7 @@ export default function Home() {
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
                     />
-                    <b>{"What's Hot: "}</b>
+                    <b className="font-bold">{"What's Hot: "}</b>
                     <a
                     href='https://lunarcrush.com/trending'
                     target='_blank'

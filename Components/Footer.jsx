@@ -7,7 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 import ArticleIcon from "@mui/icons-material/Article";
 import ForumIcon from '@mui/icons-material/Forum';
-import RedeemIcon from "@mui/icons-material/Redeem";
+import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
@@ -109,7 +109,7 @@ const Footer = () => {
 
               <div>
                 <i className='fa fa-envelope'>
-                  <RedeemIcon style={{ fontSize: 25, color: "#F5900C" }} />
+                  <DiamondOutlinedIcon style={{ fontSize: 25, color: "#F5900C" }} />
                 </i>
                 <p>
                   <a

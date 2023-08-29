@@ -58,9 +58,9 @@ const Insights = () => {
   return (
 <main className={` ${backgroundTheme} relative flex flex-col`}>
   <div style={styles.insightsContainer} className={`${textTheme}`}>
-    <h1 style={styles.heading}>                    <RocketLaunchIcon
+    <h1 style={styles.heading} className="flex justify-center items-center underline">                    <RocketLaunchIcon
                       color='white'
-                      style={{ fontSize: 25, color: "#F5900C" }}
+                      style={{ fontSize: 25, color: "#F5900C",marginRight:5 }}
                     /> Introducing Bear and Bull Index Insights: Your Secret Weapon to Crypto Success!</h1>
     <p>
       Tired of deciphering the cryptic signals of the crypto market? Say hello to Bear and Bull Index Insights,
@@ -100,9 +100,9 @@ const Insights = () => {
       You heard that right – unlimited access to the Bear and Bull Index AI-Report for only $1 a month!
       That&apos;s a cup of coffee&apos;s worth for insights that could change your crypto game.
     </p>
-    <h1 style={styles.heading}>   <PeopleAltIcon
+    <h1 style={styles.heading} className="flex justify-center items-center underline" >   <PeopleAltIcon
                       color='white'
-                      style={{ fontSize: 25, color: "#F5900C" }}
+                      style={{ fontSize: 25, color: "#F5900C",marginRight:5 }}
                     />   Why Join the Exclusive Circle of Subscribers? Here&apos;s Why:</h1>
     <p>
     <strong><ArrowRightIcon
