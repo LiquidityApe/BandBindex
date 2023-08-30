@@ -198,10 +198,10 @@ const Insights = () => {
           marginTop: '20px',
           cursor: 'pointer',
           backgroundColor: 'transparent',
-          border: '2px solid #F5900C',
+          border: '2px solid #0A0D0D',
           borderRadius: '5px',
           padding: '10px 20px',
-          color: '#F5900C',
+          color: '#0A0D0D',
           transition: 'background-color 0.3s, color 0.3s',
         }}
         onClick={openSubscriptionPage}
@@ -210,7 +210,7 @@ const Insights = () => {
           e.target.style.backgroundColor = '#F5900C';
         }}
         onMouseLeave={(e) => {
-          e.target.style.color = '#F5900C';
+          e.target.style.color = '#0A0D0D';
           e.target.style.backgroundColor = 'transparent';
         }}
       >
