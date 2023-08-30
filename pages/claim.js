@@ -168,14 +168,14 @@ const Claim = (props) => {
     scale: [0, 0.2, 0.4, 1, 0.8, 1],
     rotate: [],
   }}
-  className='mb-5 absolute top-5 right-10 text-sm flex items-center font-normal space-x-1'
+  className='mb-5 absolute top-5 right-4 text-sm flex items-center font-normal space-x-1'
 >
   <AccessAlarmsRounded
                       color='white'
                       style={{ fontSize: 25, color: "#F5900C" }}
                     />
 <div className={textTheme}>
-<span className="font-bold">{totalLeft} Index</span> left to claim</div>
+<span className="font-bold">Index left to claim:</span> {totalLeft}</div>
 </motion.h1>
 
             <motion.h1
@@ -195,7 +195,7 @@ const Claim = (props) => {
       className='rotating-image' // Apply the CSS class here
     />
   </center>
-  <div className={textTheme}>Rewards: You have {points||0} Index</div>
+  <div className={textTheme}>You have {points||0} Index Rewards</div>
 </motion.h1>
             <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
               <h2 className='mb-5'>{props.title}</h2>
