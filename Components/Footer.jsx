@@ -6,7 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 import ArticleIcon from "@mui/icons-material/Article";
-import ForumIcon from '@mui/icons-material/Forum';
+import QuizIcon from '@mui/icons-material/Quiz';
 import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
@@ -91,18 +91,18 @@ const Footer = () => {
 
               <div>
                 <i className='fa fa-envelope'>
-                  <ForumIcon style={{ fontSize: 25, color: "#F5900C" }} />
+                  <QuizIcon style={{ fontSize: 25, color: "#F5900C" }} />
                 </i>
                 <p>
                   {" "}
                   <a
-                    href='https://t.me/bandbindex_official'
+                    href='/faq'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='text-white hover:text-[#f5900c]'
                     
                   >
-                    Join Community
+                    Support
                   </a>
                 </p>
               </div>
