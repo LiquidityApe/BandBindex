@@ -4,20 +4,6 @@ import clientPromise from "@/lib/mongodb";
 export default async function (req, res) {
   await useCors("https://bandbindex.com/")(req, res);
 
-  // Handle OPTIONS request
-  if (req.method === "OPTIONS") {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://bandbindex.com/"
-    );
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "application/x-www-form-urlencoded"
-    );
-    res.status(200).end();
-    return;
-  }
   const { address } = req.body;
 
   try {
@@ -40,13 +26,13 @@ export default async function (req, res) {
       } else {
         // If lastClaim doesn't exist or isn't a valid date, set lastClaimDate to now and reset dailyClaim to 10
         lastClaimDate = now;
-        result.dailyClaim = 10;
+        result.dailyClaim = 5;
       }
 
       // Check if more than 24 hours have passed since the last claim
       let diffInHours = Math.abs(now - lastClaimDate) / (1000 * 60 * 60);
       if (diffInHours > 24) {
-        result.dailyClaim = 10;
+        result.dailyClaim = 5;
       }
 
       // Update the document with the new dailyClaim and lastClaim values

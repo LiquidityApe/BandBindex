@@ -528,6 +528,10 @@ ul a:hover {
   animation: rotateAnimation 4s linear infinite;
   transform-origin: center;
 }
+.rotating-image2 {
+  animation: rotateAnimation 4s linear infinite;
+  transform-origin: center;
+}
 
 @keyframes rotateAnimation {
   0%, 100% {

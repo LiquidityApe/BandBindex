@@ -28,12 +28,10 @@ export default async function (req, res) {
 
     let dailyClaim = userDoc.dailyClaim;
     // Progress claim logic
-    if (dailyClaim < 60) {
-      dailyClaim += 10;
-    } else if (dailyClaim >= 60 && dailyClaim < 100) {
-      dailyClaim += 40;
-    } else if (dailyClaim >= 100) {
-      dailyClaim = 10;
+    if (dailyClaim < 35) {
+      dailyClaim += 5;
+    }else if (dailyClaim >= 35) {
+      dailyClaim = 5;
     }
 
     const result = await db.collection("Index").findOneAndUpdate(

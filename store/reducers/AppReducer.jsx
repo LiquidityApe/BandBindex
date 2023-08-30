@@ -4,9 +4,10 @@ export const fetchData = createAsyncThunk();
 export const initialState = {
   User: "",
   balance: 0,
+  points:0,
   Claimed: false,
   token: "0x1Fa171C036AB2A37Ece104AF47c4c32fc5e67CC4",
-  dailyClaim: 10,
+  dailyClaim: 5,
 };
 
 const AppSlice = createSlice({
@@ -23,15 +24,9 @@ const AppSlice = createSlice({
     setDailyClaim(state, action) {
       state.dailyClaim = action.payload ? action.payload : 10;
     },
-    progressClaim(state) {
-      state.dailyClaim =
-        state.dailyClaim < 60
-          ? state.dailyClaim + 10
-          : state.dailyClaim >= 60
-          ? state.dailyClaim + 40
-          : state.dailyClaim >= 100
-          ? 10
-          : null;
+    setPoint(state,action) {
+      state.points = action.payload
+    
     },
     setClaimed(state, action) {
       state.lastClaim = new Date();
@@ -51,7 +46,7 @@ const AppSlice = createSlice({
 });
 
 export const {
-  progressClaim,
+  setPoint,
   claimPoints,
   setClaimed,
   setDailyClaim,

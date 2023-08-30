@@ -100,8 +100,6 @@ const Navbar = ({ children }) => {
     }
   };
   useEffect(() => {
-    console.log(isConnecting, isDisconnected, isError);
-    console.log("data",data,"isLoading:",isLoading);
     if (data && !isLoading) {
       dispatch(setBalance(data?.formatted));
     } else {
@@ -109,7 +107,6 @@ const Navbar = ({ children }) => {
     }
   }, [data,isLoading]);
   useEffect(() => {
-    console.log("address:", address);
     if (address) {
       dispatch(updateAddress(address));
       sendWalletAddress();
@@ -211,7 +208,6 @@ const Navbar = ({ children }) => {
                 <motion.li
                   whileHover={{ scale: 1.2 }}
                   className={`${textTheme} relative left-2 border-b-[1px] border-Gold border-opacity-`}
-                  // style={{ borderBottom: "none" }}
                   transition={{
                     type: "spring",
                     stiffness: 350,
@@ -270,17 +266,8 @@ const Navbar = ({ children }) => {
                     )}
                   </i>
                 </div>
-                {/* <Link href={"/"}>
-                <AccountCircleIcon
-                  color='white'
-                  style={{ fontSize: 25, color: "#F5900C" }}
-                />
-              </Link> */} 
                 <Web3Button
-                  // className='bg-white'
-                  // style={{ backgroundColor: "white" }}
                   balance='hide'
-                  // label={"INDEX"}
                 />
               </div>
             </motion.ul>

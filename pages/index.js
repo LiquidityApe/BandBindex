@@ -33,7 +33,6 @@ export default function Home() {
   const mobile = useScreenWidth() < 788;
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const colorTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
-  // console.log("sentiment", data.sentiment);
 
   //function to interpolate data for the semi-circle guage
   function lerp(inputStart, inputEnd, outputStart, outputEnd, input) {
@@ -95,6 +94,7 @@ export default function Home() {
   }
 
   if (error) {
+    console.log(error);
     return (
       <div className={textTheme}>
         <div className={` ${colorTheme} relative flex flex-col`}>
@@ -106,6 +106,7 @@ export default function Home() {
                 <p className={textTheme}>
                   The page will automatically reload in {countdown} seconds.
                 </p>
+                <p>{error.message}</p>
               </center>
             </div>
           </div>

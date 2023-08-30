@@ -6,10 +6,11 @@ import Box from "../Components/Box";
 import { TiTime } from "react-icons/ti";
 import SlideIn from "../Components/SlideIn";
 import { useSelector, useDispatch } from "react-redux";
-import { setClaimed, setDailyClaim } from "../store/reducers/AppReducer";
+import { setClaimed, setDailyClaim, setPoint } from "../store/reducers/AppReducer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
+import AccessAlarmsRounded from '@mui/icons-material/AccessAlarmsRounded';
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const Claim = (props) => {
   const [timeLeft, setTimeLeft] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [points, setPoints] = useState(null);
+  const [totalLeft, setTotalLeft] = useState(null);
+
   const [lastClaimed, setLastClaimed] = useState(null);
   const [dailyClaimed, setDailyClaimed] = useState(null);
   const { theme } = useSelector((state) => state.Theme);
@@ -82,7 +85,22 @@ const Claim = (props) => {
         ? "https://bandbindex.com"
         : "http://localhost:3000";
 
-    // Make a POST request to /api/points with the address in the body
+        // Make a POST request to /api/totalClaim to get total index left
+
+
+
+           axios
+      .post(
+        `${baseUrl}/api/totalClaim`,
+      ).then((res) => {
+        const indexLeft = 1000000 - res.data.totalPoints
+        setTotalLeft(indexLeft)
+      }
+      ).catch((err) => {
+        console.error(err);
+      });
+
+
     axios
       .post(
         `${baseUrl}/api/points`,
@@ -96,6 +114,7 @@ const Claim = (props) => {
         setLastClaimed(claimData.lastClaim);
         setDailyClaimed(claimData.dailyClaim);
         dispatch(setDailyClaim(claimData.dailyClaim));
+        dispatch(setPoint(claimData.points))
       })
       .catch((err) => {
         console.error(err);
@@ -143,6 +162,22 @@ const Claim = (props) => {
           />
         ) : (
           <div className='max-w-max mx-auto flex flex-col items-center'>
+                      <motion.h1
+  initial={{ scale: [0], rotate: [0] }}
+  animate={{
+    scale: [0, 0.2, 0.4, 1, 0.8, 1],
+    rotate: [],
+  }}
+  className='mb-5 absolute top-5 right-10 text-sm flex items-center font-normal space-x-1'
+>
+  <AccessAlarmsRounded
+                      color='white'
+                      style={{ fontSize: 25, color: "#F5900C" }}
+                    />
+<div className={textTheme}>
+<span className="font-bold">{totalLeft} Index</span> left to claim</div>
+</motion.h1>
+
             <motion.h1
   initial={{ scale: [0], rotate: [0] }}
   animate={{
@@ -155,8 +190,8 @@ const Claim = (props) => {
     <Image
       src={"/assets/images/token.png"}
       alt='Logo'
-      width={300}
-      height={300}
+      width={100}
+      height={100}
       className='rotating-image' // Apply the CSS class here
     />
   </center>
