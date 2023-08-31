@@ -106,7 +106,7 @@ export default function Home() {
                 <p className={textTheme}>
                   The page will automatically reload in {countdown} seconds.
                 </p>
-                <p>{error.message}</p>
+                {/*<p>{error.message}</p>*/}
               </center>
             </div>
           </div>
