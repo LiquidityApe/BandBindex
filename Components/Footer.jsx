@@ -24,7 +24,6 @@ const Footer = () => {
   const animationCenter = useAnimation();
   const animationRight = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.1 });
-  const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const textTheme2 = !theme ? "text-slate-950" : "text-slate-100";
   const backgroundTheme = theme ? "bg-slate-50" : "bg-slate-900";
   const backgroundTheme2 = !theme ? "bg-slate-300" : "bg-[#0A0D0D]";
@@ -223,7 +222,7 @@ const Footer = () => {
 
           <p>
             <a
-              href='#switchtheme'
+              href=''
               className={`${backgroundTheme2} ${textTheme2} hover:text-[#f5900c]`}
               onClick={() => {
                 dispatch(setTheme());
@@ -239,7 +238,7 @@ const Footer = () => {
         <p className={`${textTheme2} footer-company-about`}>
           <span className={`${backgroundTheme2} ${textTheme2}`}>
             <AnnouncementIcon style={{ fontSize: 25, color: "#F5900C" }} />
-            DISCLAIMER
+            &nbsp;DISCLAIMER
           </span>
           The website&apos;s information isn&apos;t investment, financial, or
           trading advice. Don&apos;t interpret its content as such. Do your

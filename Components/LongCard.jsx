@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
-import { easeIn, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import { useAnimation } from "framer-motion";

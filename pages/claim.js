@@ -16,6 +16,8 @@ import axios from "axios";
 import { PacmanLoader } from "react-spinners";
 import AccessAlarmsRounded from "@mui/icons-material/AccessAlarmsRounded";
 import Footer from "@/Components/Footer";
+import BackToTopButton from "@/Components/BackToTopButton";
+import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -158,23 +160,30 @@ const Claim = (props) => {
             />
           ) : (
             <div className='max-w-max mx-auto flex flex-col items-center'>
-              <motion.h1
-                initial={{ scale: [0], rotate: [0] }}
-                animate={{
-                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
-                  rotate: [],
-                }}
-                className='mb-5 absolute top-5 right-10 text-sm flex items-center font-normal space-x-1'
-              >
-                <AccessAlarmsRounded
-                  color='white'
-                  style={{ fontSize: 25, color: "#F5900C" }}
-                />
-                <div className={textTheme}>
-                  <span className='font-bold'>{totalLeft} Index</span> left to
-                  claim
-                </div>
-              </motion.h1>
+<motion.h1
+  initial={{ scale: [0], rotate: [0] }}
+  animate={{
+    scale: [0, 0.2, 0.4, 1, 0.8, 1],
+    rotate: [],
+  }}
+  className='mb-5 absolute top-5 right-4 text-sm flex items-center justify-center font-normal space-x-1'
+>
+  <AnnouncementOutlinedIcon
+    color='white'
+    style={{ fontSize: 25, color: "#F5900C" }}
+  />
+  <div className={textTheme}>
+    <a
+      href='https://discord.com/channels/1141795377180311563/1141795377968853166'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      Give Feedback
+    </a>
+  </div>
+</motion.h1>
+
+
 
               <motion.h1
                 initial={{ scale: [0], rotate: [0] }}
@@ -194,7 +203,7 @@ const Claim = (props) => {
                   />
                 </center>
                 <div className={textTheme}>
-                  Rewards: You have {points || 0} Index
+                  You have {points || 0} Index Rewards!
                 </div>
               </motion.h1>
               <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
@@ -207,15 +216,15 @@ const Claim = (props) => {
                   })}
                 </div>
                 <p className='mt-4'>
-                  Nice! You can pick up{" "}
+                Claim {" "}
                   <span className='text-teal-600 font-bold'>
                     {dailyClaimed}
                   </span>{" "}
-                  $INDEX 🚀 next time you log into BandBindex.
+                  $INDEX 🚀 next time you log in to BandBindex!
                 </p>
 
                 <p className='mb-2'>
-                  Log in 7 days in a row, your rewards will grow.
+                Log in 7 days straight for bigger rewards.
                 </p>
 
                 <button
@@ -240,9 +249,29 @@ const Claim = (props) => {
                   }}
                 />
               </div>
+              <motion.h1
+                initial={{ scale: [0], rotate: [0] }}
+                animate={{
+                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
+                  rotate: [],
+                }}
+                className='mb-5 text-sm flex items-center font-normal'
+              >
+                <AccessAlarmsRounded
+                  color='white'
+                  style={{ fontSize: 25, color: "#F5900C" }}
+                />&nbsp;
+                <div className={textTheme}>
+                BandBers, there's only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
+                  claim
+                </div>
+              </motion.h1>
             </div>
           )}
         </div>
+        <b>
+          <BackToTopButton />
+        </b>        
       </div>
       <Footer />
     </div>

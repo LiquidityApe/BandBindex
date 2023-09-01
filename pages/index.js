@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
@@ -36,7 +36,7 @@ export default function Home() {
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const colorTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
   const animation = useAnimation();
-  const { ref, inView } = useInView({ threshold: 0.2 });
+  const { inView } = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     console.log("inView", inView);
@@ -373,7 +373,7 @@ export default function Home() {
         <h4
           className={` ${textTheme}  py-[10px] market_overview text-2xl mb-[10vh] md:text-5xl  max-w-max text-center self-end mx-auto`}
         >
-          Terms and Information
+          Dig Deeper
         </h4>
         <section className='flex flex-col items-center'>
           <LongCard title='Why Bear & Bull Index?' />
