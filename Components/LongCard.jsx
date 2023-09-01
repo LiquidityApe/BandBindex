@@ -332,7 +332,7 @@ export default function LongCard({ title }) {
           {/* <div className='w-[98vw] mx-auto border-2 border-black'> */}
           <video className='w-full' autoPlay controls>
             <source
-              src='https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Foa9jgybdEKsfdL8UhZNe%2Fuploads%2FDeapW9vpf5E5PDSavGDU%2FBear%20and%20Bull%20Index%20Launch%20Video.mp4?alt=media&token=fdb9dc13-b7dd-4a90-a19f-1350434c61e3'
+              src='https://youtu.be/RM77FM7X6zM?si=WyguWD6zGoA-RWki'
               type='video/mp4'
             />
             Your browser does not support the video tag.

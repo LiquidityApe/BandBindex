@@ -7,6 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 import ArticleIcon from "@mui/icons-material/Article";
 import QuizIcon from "@mui/icons-material/Quiz";
+import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import { motion, stagger } from "framer-motion";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
@@ -258,6 +259,12 @@ const Footer = () => {
           >
             <TelegramIcon />
           </a>
+          <a
+            href='https://discord.gg/XjkjJV65vV'
+            style={{ background: "#33383b" }}
+          >
+            <ForumOutlinedIcon />
+          </a>          
           <a
             href='https://www.linkedin.com/company/bandbindex/'
             style={{ background: "#33383b" }}
