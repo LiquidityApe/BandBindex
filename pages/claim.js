@@ -216,15 +216,15 @@ const Claim = (props) => {
                   })}
                 </div>
                 <p className='mt-4'>
-                Claim {" "}
+                Get ready to claim {" "}
                   <span className='text-teal-600 font-bold'>
                     {dailyClaimed}
                   </span>{" "}
-                  $INDEX 🚀 next time you log in to BandBindex!
+                  $INDEX 🚀 next time you log in!
                 </p>
 
                 <p className='mb-2'>
-                Log in 7 days straight for bigger rewards.
+                Unlock bigger rewards by logging in for 7 days straight.
                 </p>
 
                 <button
@@ -262,7 +262,7 @@ const Claim = (props) => {
                   style={{ fontSize: 25, color: "#F5900C" }}
                 />&nbsp;
                 <div className={textTheme}>
-                BandBers, there&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
+                There&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
                   claim
                 </div>
               </motion.h1>
