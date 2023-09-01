@@ -222,7 +222,7 @@ const Footer = () => {
 
           <p>
             <a
-              href=''
+              href='#?theme=switch'
               className={`${backgroundTheme2} ${textTheme2} hover:text-[#f5900c]`}
               onClick={() => {
                 dispatch(setTheme());

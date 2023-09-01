@@ -249,23 +249,24 @@ const Claim = (props) => {
                   }}
                 />
               </div>
-              <motion.h1
-                initial={{ scale: [0], rotate: [0] }}
-                animate={{
-                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
-                  rotate: [],
-                }}
-                className='mb-5 text-sm flex items-center font-normal'
-              >
-                <AccessAlarmsRounded
-                  color='white'
-                  style={{ fontSize: 25, color: "#F5900C" }}
-                />&nbsp;
-                <div className={textTheme}>
-                There&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
-                  claim
-                </div>
-              </motion.h1>
+              {totalLeft !== null && (
+  <motion.h1
+    initial={{ scale: [0], rotate: [0] }}
+    animate={{
+      scale: [0, 0.2, 0.4, 1, 0.8, 1],
+      rotate: [],
+    }}
+    className='mb-5 text-sm flex items-center font-normal'
+  >
+    <AccessAlarmsRounded
+      color='white'
+      style={{ fontSize: 25, color: "#F5900C" }}
+    />&nbsp;
+    <div className={textTheme}>
+      There&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to claim
+    </div>
+  </motion.h1>
+)}
             </div>
           )}
         </div>
