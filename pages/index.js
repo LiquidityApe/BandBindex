@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-
 import LockIcon from "@mui/icons-material/Lock";
-
 import { PacmanLoader } from "react-spinners";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
 
 import useScreenWidth from "@/hooks/useScreenWidth";
 import InsightsCard from "@/Components/InsightsCard";
@@ -27,12 +28,30 @@ const year = date.getFullYear();
 const todaysDate = `${day} ${month} ${year}`;
 
 export default function Home() {
+  const [countdown, setCountdown] = useState(5);
   const { theme } = useSelector((state) => state.Theme);
-  const { balance } = useSelector((state) => state.App);
+  const { balance, points } = useSelector((state) => state.App);
   const { data, loading, error } = useDataFetching();
   const mobile = useScreenWidth() < 788;
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const colorTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
+  const animation = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0.2 });
+
+  useEffect(() => {
+    console.log("inView", inView);
+
+    if (inView) {
+      animation.start({
+        y: 0,
+        transition: { type: "spring", duration: 1.5, bounce: 0.3 },
+      });
+    } else {
+      animation.start({
+        y: `100vh`,
+      });
+    }
+  }, [inView, animation]);
 
   //function to interpolate data for the semi-circle guage
   function lerp(inputStart, inputEnd, outputStart, outputEnd, input) {
@@ -43,12 +62,34 @@ export default function Home() {
     );
   }
 
-  const [countdown, setCountdown] = useState(5);
-
   const override = {
-    display: 'block',
-    margin: '0 auto',
-    borderColor: 'red',
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+  const locked = (tooltip, text) => {
+    return (
+      <InsightsCard tooltip={tooltip} text={text}>
+        <div
+          className='flex flex-col justify-center items-center h-[85%]'
+          style={{ textAlign: "center" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+            className={`${textTheme}`}
+          >
+            <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
+            Need 100 INDEX to Unlock
+          </div>
+        </div>
+      </InsightsCard>
+    );
   };
 
   useEffect(() => {
@@ -75,9 +116,14 @@ export default function Home() {
   if (loading) {
     return (
       <div className={textTheme}>
-        <div className={` ${colorTheme} relative flex flex-col`}>
+        <div className={` ${colorTheme} relative flex-1 flex flex-col`}>
           <div className='flex flex-row items-center h-[100vh] justify-center'>
-            <div className='max-w-max'>
+            <motion.div
+              initial={{ x: -200 }}
+              transition={{ duration: 8 }}
+              animate={{ x: 100 }}
+              className='max-w-max'
+            >
               <PacmanLoader
                 color={"#F5900C"}
                 loading={true}
@@ -86,7 +132,7 @@ export default function Home() {
                 aria-label='Loading Spinner'
                 data-testid='loader'
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -115,49 +161,53 @@ export default function Home() {
     );
   }
 
+  const fadeInFromBottom = {
+    hidden: {
+      opacity: 0,
+      y: 100, // initial vertical position
+    },
+    visible: {
+      opacity: 1,
+      y: 0, // end position
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    
     <div className='flex items-center justify-center h-full flex-1'>
       <main className={` ${colorTheme} relative flex flex-col`}>
-        <div className='flex w-full justify-between  h-[11vh] md:h-[14vh] lg:h-[18vh]'>
-          <div className='flex relative bottom-[1vh] lg:bottom-0 h-[70%] my-auto self-start items-center'>
-            <div className='absolute flex top-[2vh] md:top-[1vh] ml-[6vh] md:ml-[9.5vw] lg:ml-[8vw] min-w-max self-center'>
+        <div className='flex w-full justify-between items-center  px-[3vw] pt-[2vh] my-5'>
+          <div className=''>
             <h4 className={`${textTheme}`}>
-                {mobile ? (
-                  ""
-                ) : (
-                  <>
-                    <WhatshotIcon
-                      color='white'
-                      style={{ fontSize: 25, color: "#F5900C" }}
-                    />
-                    <b className="font-bold">{"What's Hot: "}</b>
-                    <a
-                    href='https://lunarcrush.com/trending'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='hover:text-midorange transition-all duration-200'
-                  >
-                    ${data.coin.symbol}
-                  </a>
-                  </>
-                )}
-              </h4>
-            </div>
+              <div className={`md:flex hidden  items-center`}>
+                <WhatshotIcon
+                  color='white'
+                  style={{ fontSize: 25, color: "#F5900C" }}
+                />
+                <b className='font-bold mr-1'>{"What's Hot :"}</b>
+                <a
+                  href='https://lunarcrush.com/trending'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='hover:text-midorange transition-all duration-200'
+                >
+                  ${data.coin.symbol}
+                </a>
+              </div>
+            </h4>
           </div>
-          <h4
-            className={` ${textTheme} market_overview text-2xl md:text-5xl  w-full text-center self-end mx-auto`}
-          >
-            Market Overview
-          </h4>
-          <div className='w-[20vw] self-center absolute items-center right-[2vw] flex flex-col justify-center'>
+
+          <div className='self-center items-center  flex flex-col justify-center'>
             <h4 className={` ${textTheme} hidden font-[800] lg:flex`}>
               {todaysDate}
             </h4>
-<div
-  style={{ lineHeight: 1, color: "#F5900C" }}
-  className='font-medium-light text-center hidden md:flex text-lg'
->
+            <div
+              style={{ lineHeight: 1, color: "#F5900C" }}
+              className='font-medium-light text-center hidden md:flex text-lg'
+            >
               {<CountdownTimer />}
             </div>
             <b>
@@ -165,36 +215,17 @@ export default function Home() {
             </b>
           </div>
         </div>
+        <h4
+          className={` ${textTheme}  py-[10px] market_overview text-2xl md:text-5xl  max-w-max text-center self-end mx-auto`}
+        >
+          Market Overview
+        </h4>
         <section className='mx-[2vw] flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-[4vh]'>
           <div>
-            {!balance || balance < 100 ? (
+            {points >= 100 || balance >= 100 ? (
               <InsightsCard
                 tooltip='Historical Analysis refers to a concise overview of the BandBindex data spanning a 7-day period. It offers insights into trends, patterns, and changes that have occurred within this timeframe.'
                 text='Historical Analysis'
-              >
-                <div
-                  className='flex flex-col justify-center items-center h-[85%]'
-                  style={{ textAlign: "center" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                    className={`${textTheme}`}
-                  >
-                    <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
-                    Need 100 INDEX to Unlock
-                  </div>
-                </div>
-              </InsightsCard>
-            ) : (
-              <InsightsCard
-              tooltip='Historical Analysis refers to a concise overview of the BandBindex data spanning a 7-day period. It offers insights into trends, patterns, and changes that have occurred within this timeframe.'
-              text='Historical Analysis'
               >
                 <div className='flex w-[80vw] h-full justify-center items-center'>
                   <Charts
@@ -203,95 +234,74 @@ export default function Home() {
                   />
                 </div>
               </InsightsCard>
+            ) : (
+              locked(
+                "Historical Analysis refers to a concise overview of the BandBindex data spanning a 7-day period. It offers insights into trends, patterns, and changes that have occurred within this timeframe.",
+                "Historical Analysis"
+              )
             )}
           </div>
 
           <div>
-            {!balance || balance < 100 ? (
+            {points >= 100 || balance >= 100 ? (
               <InsightsCard
-              tooltip='Actionable Insights refer to the presentation of both Buy the Dip (BTD) and Sell the Pump (STP) signals. These insights assist users in identifying potential opportunities for buying or selling based on shifts in market sentiment.'
-              text='Actionable Insight'>
-                <div
-                  className='flex flex-col justify-center items-center h-[85%]'
-                  style={{ textAlign: "center" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                    className={`${textTheme}`}
-                  >
-                    <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
-                    Need 100 INDEX to Unlock
+                tooltip='Actionable Insights refer to the presentation of both Buy the Dip (BTD) and Sell the Pump (STP) signals. These insights assist users in identifying potential opportunities for buying or selling based on shifts in market sentiment.'
+                text='Actionable Insight'
+              >
+                <div className='flex flex-col justify-around w-full  items-center h-full'>
+                  <div className='h-[40%] flex flex-col justify-around w-[60%]'>
+                    <p className='w-full text-center text-[20px] font-[800] text-[#04bd64ff]'>
+                      {data.BTD}%
+                    </p>
+                    <div className='bg-gray-700 w-full  h-[30%]'>
+                      <motion.div
+                        animate={{ width: `${data.BTD}%` }}
+                        style={{ width: `${0}%` }}
+                        transition={{ duration: 1 }}
+                        className='bg-[#04bd64ff] h-full'
+                      ></motion.div>
+                    </div>
+                    <p className='w-full text-center text-[20px] font-[800] text-[#04bd64ff]'>
+                      Buy the Dip
+                    </p>
+                  </div>
+                  <div className='h-[40%] flex flex-col justify-around w-[60%]'>
+                    <p className='w-full text-center text-[20px] font-[800] text-[#c0041dff]'>
+                      {data.STP}%
+                    </p>
+                    <div className='bg-gray-700 w-full h-[30%]'>
+                      <motion.div
+                        animate={{ width: `${data.STP}%` }}
+                        style={{ width: `${0}%` }}
+                        transition={{ duration: 1 }}
+                        className='bg-[#c0041dff] h-full'
+                      ></motion.div>
+                    </div>
+                    <p className='w-full text-center text-[20px] font-[800] text-[#c0041dff]'>
+                      Sell the Pump
+                    </p>
                   </div>
                 </div>
               </InsightsCard>
             ) : (
-              <InsightsCard
-              tooltip='Actionable Insights refer to the presentation of both Buy the Dip (BTD) and Sell the Pump (STP) signals. These insights assist users in identifying potential opportunities for buying or selling based on shifts in market sentiment.'
-              text='Actionable Insight'
-              >
-                <div className='flex flex-col justify-between relative bottom-[2vh] items-center self-center h-[85%]'>
-                  <div className='bg-gray-700 relative top-[10vh] w-[65%] h-[12%]'>
-                    <div
-                      style={{ width: `${data.BTD}%` }}
-                      className='bg-[#04bd64ff] w-[30%] h-full'
-                    ></div>
-                  </div>
-                  <p className='self-center relative top-[5vh] text-[20px] font-[800] text-[#04bd64ff]'>
-                    Buy the Dip
-                  </p>
-                  <div className='bg-gray-700 relative top-[5vh] w-[65%] h-[12%]'>
-                    <div
-                      style={{ width: `${data.STP}%` }}
-                      className='bg-[#c0041dff] w-[30%] h-full'
-                    ></div>
-                  </div>
-                  <p className='self-center text-[20px] font-[800] text-[#c0041dff]'>
-                    Sell the Pump
-                  </p>
-                </div>
-              </InsightsCard>
+              locked(
+                "Actionable Insights refer to the presentation of both Buy the Dip (BTD) and Sell the Pump (STP) signals. These insights assist users in identifying potential opportunities for buying or selling based on shifts in market sentiment.",
+                "Actionable Insight"
+              )
             )}
           </div>
 
           <div>
             <InsightsCard
-            tooltip='Market Sentiment provides an insight into the prevailing emotions and attitudes within the crypto market. This sentiment is often influenced by discussions and interactions on social media platforms. It reflects moments of fear, optimism, skepticism, or enthusiasm that traders and investors express online.'
-            text='Market Sentiment'>
+              tooltip='Market Sentiment provides an insight into the prevailing emotions and attitudes within the crypto market. This sentiment is often influenced by discussions and interactions on social media platforms. It reflects moments of fear, optimism, skepticism, or enthusiasm that traders and investors express online.'
+              text='Market Sentiment'
+            >
               <MarketSentiment sentiment={data.sentiment} />
             </InsightsCard>
           </div>
 
           <div>
-            {!balance || balance < 100 ? (
-              <InsightsCard
-              tooltip='The Market Sentiment Analysis tool within BandBindex provides users with a comprehensive overview of the prevailing sentiment within the crypto market. This sentiment is categorized into three main states: Bearish, Neutral, and Bullish'
-              text='Market Sentiment Analysis'>
-                <div
-                  className='flex flex-col justify-center items-center h-[85%]'
-                  style={{ textAlign: "center" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                    className={`${textTheme}`}
-                  >
-                    <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
-                    Need 100 INDEX to Unlock
-                  </div>
-                </div>
-              </InsightsCard>
-            ) : (
+            {points >= 100 || balance >= 100 ? (
               <InsightsCard
                 today={data?.today?.MSA}
                 yesterday={data?.yesterday?.MSA}
@@ -305,35 +315,15 @@ export default function Home() {
                   <SemiCircle guage={lerp(0, 100, -90, 90, data?.today?.MSA)} />
                 </div>
               </InsightsCard>
+            ) : (
+              locked(
+                "The Market Sentiment Analysis tool within BandBindex provides users with a comprehensive overview of the prevailing sentiment within the crypto market. This sentiment is categorized into three main states: Bearish, Neutral, and Bullish",
+                "Market Sentiment Analysis"
+              )
             )}
           </div>
 
-          {!balance || balance < 100 ? (
-            <>
-              <InsightsCard
-              tooltip='The Social Analysis Summary feature of BandBindex involves a comprehensive analysis of the ongoing social conversations related to various cryptocurrencies. This tool assesses the sentiment expressed in these conversations and classifies it into three main categories: Dollar Cost Average, Neutral, or Stop Loss.'
-              text='Social Analysis Summary'>
-                <div
-                  className='flex flex-col justify-center items-center h-[85%]'
-                  style={{ textAlign: "center" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                    className={`${textTheme}`}
-                  >
-                    <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
-                    Need 100 INDEX to Unlock
-                  </div>
-                </div>
-              </InsightsCard>
-            </>
-          ) : (
+          {points >= 100 || balance >= 100 ? (
             <>
               <InsightsCard
                 today={data?.today?.SAS}
@@ -351,71 +341,49 @@ export default function Home() {
                 </div>
               </InsightsCard>
             </>
+          ) : (
+            locked(
+              "The Social Analysis Summary feature of BandBindex involves a comprehensive analysis of the ongoing social conversations related to various cryptocurrencies. This tool assesses the sentiment expressed in these conversations and classifies it into three main categories: Dollar Cost Average, Neutral, or Stop Loss.",
+              "Social Analysis Summary"
+            )
           )}
 
-          {!balance || balance < 100 ? (
-            <>
-              <InsightsCard
+          {points >= 100 || balance >= 100 ? (
+            <InsightsCard
+              today={data?.today?.RSI}
+              yesterday={data?.yesterday?.RSI}
+              lastweek={data?.lastweek?.RSI}
+              lastMonth={data?.lastMonth?.RSI}
+              insights
               tooltip='The Relative Strength Index (RSI) is a widely used technical indicator that assists in evaluating potential overbought or oversold conditions in the price of cryptocurrencies within the crypto market.'
-              text='Relative Strength Index'>
-                <div
-                  className='flex flex-col justify-center items-center h-[85%]'
-                  style={{ textAlign: "center" }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                    className={`${textTheme}`}
-                  >
-                    <LockIcon style={{ fontSize: 50, color: "#F5900C" }} />
-                    Need 100 INDEX to Unlock
-                  </div>
-                </div>
-              </InsightsCard>
-            </>
+              text='Relative Strength Index'
+            >
+              <div className='relative bottom-7'>
+                <SemiCircle2 guage={lerp(0, 100, -90, 90, data?.today?.RSI)} />
+              </div>
+              {/* <MeterGauge /> */}
+            </InsightsCard>
           ) : (
-            <>
-              <InsightsCard
-                today={data?.today?.RSI}
-                yesterday={data?.yesterday?.RSI}
-                lastweek={data?.lastweek?.RSI}
-                lastMonth={data?.lastMonth?.RSI}
-                insights
-                tooltip='The Relative Strength Index (RSI) is a widely used technical indicator that assists in evaluating potential overbought or oversold conditions in the price of cryptocurrencies within the crypto market.'
-                text='Relative Strength Index'
-              >
-                <div className='relative bottom-7'>
-                  <SemiCircle2
-                    guage={lerp(0, 100, -90, 90, data?.today?.RSI)}
-                  />
-                </div>
-                {/* <MeterGauge /> */}
-              </InsightsCard>
-            </>
+            locked(
+              "The Relative Strength Index (RSI) is a widely used technical indicator that assists in evaluating potential overbought or oversold conditions in the price of cryptocurrencies within the crypto market.",
+              "Relative Strength Index"
+            )
           )}
         </section>
-        <section className='flex flex-col mb-[10vh] items-center'></section>
-        <section className='flex flex-col mb-[15vh] items-center'>
+        <h4
+          className={` ${textTheme}  py-[10px] market_overview text-2xl mb-[10vh] md:text-5xl  max-w-max text-center self-end mx-auto`}
+        >
+          Terms and Information
+        </h4>
+        <section className='flex flex-col items-center'>
           <LongCard title='Why Bear & Bull Index?' />
-        </section>
-        <section className='flex flex-col mb-[15vh] items-center'>
           <LongCard title='Data Sources' />
-        </section>
-        <section className='flex flex-col mb-[15vh] items-center'>
           <LongCard title='Bear and Bull Index Indicators' />
-        </section>
-        <section className='flex flex-col mb-[15vh] items-center'>
           <LongCard title='Disclaimer' />
         </section>
 
         <div className={textTheme}>
-          <Footer/>
-        
+          <Footer />
         </div>
       </main>
     </div>

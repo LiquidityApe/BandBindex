@@ -6,11 +6,16 @@ import Box from "../Components/Box";
 import { TiTime } from "react-icons/ti";
 import SlideIn from "../Components/SlideIn";
 import { useSelector, useDispatch } from "react-redux";
-import { setClaimed, setDailyClaim, setPoint } from "../store/reducers/AppReducer";
+import {
+  setClaimed,
+  setDailyClaim,
+  setPoint,
+} from "../store/reducers/AppReducer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
-import AccessAlarmsRounded from '@mui/icons-material/AccessAlarmsRounded';
+import AccessAlarmsRounded from "@mui/icons-material/AccessAlarmsRounded";
+import Footer from "@/Components/Footer";
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -60,21 +65,19 @@ const Claim = (props) => {
     let now = new Date();
     now.setHours(0, 0, 0, 0);
     // Assuming lastClaim is a Date object, set the time to 00:00:00.000
-    
+
     let lastClaimDate = new Date(lastClaimed);
     lastClaimDate.setHours(0, 0, 0, 0);
     // console.log(now.getTime() > lastClaimDate.getTime());
-    now.getTime() >  lastClaimDate.getTime()
+    now.getTime() > lastClaimDate.getTime()
       ? dispatch(setClaimed(false))
       : dispatch(setClaimed(true));
 
-    if(points == null){
-      dispatch(setClaimed(false))
+    if (points == null) {
+      dispatch(setClaimed(false));
       return;
     }
-   
-
-  }, [lastClaimed]); 
+  }, [lastClaimed]);
 
   const updatePoints = () => {
     const address = User;
@@ -85,27 +88,20 @@ const Claim = (props) => {
         ? "https://bandbindex.com"
         : "http://localhost:3000";
 
-        // Make a POST request to /api/totalClaim to get total index left
+    // Make a POST request to /api/totalClaim to get total index left
 
-
-
-           axios
-      .post(
-        `${baseUrl}/api/totalClaim`,
-      ).then((res) => {
-        const indexLeft = 1000000 - res.data.totalPoints
-        setTotalLeft(indexLeft)
-      }
-      ).catch((err) => {
+    axios
+      .post(`${baseUrl}/api/totalClaim`)
+      .then((res) => {
+        const indexLeft = 1000000 - res.data.totalPoints;
+        setTotalLeft(indexLeft);
+      })
+      .catch((err) => {
         console.error(err);
       });
 
-
     axios
-      .post(
-        `${baseUrl}/api/points`,
-        { address }
-      )
+      .post(`${baseUrl}/api/points`, { address })
       .then((res) => {
         const claimData = res.data;
         // Update the state variable with the returned points
@@ -114,7 +110,7 @@ const Claim = (props) => {
         setLastClaimed(claimData.lastClaim);
         setDailyClaimed(claimData.dailyClaim);
         dispatch(setDailyClaim(claimData.dailyClaim));
-        dispatch(setPoint(claimData.points))
+        dispatch(setPoint(claimData.points));
       })
       .catch((err) => {
         console.error(err);
@@ -149,99 +145,106 @@ const Claim = (props) => {
 
   return (
     <div className={textTheme}>
-        <div className={` ${colorTheme} relative flex flex-col`}>
-      <div className='min-h-[100vh] px-5 flex items-center'>
-        {points === null ? (
-          <PacmanLoader
-            color={"#F5900C"}
-            loading={points === null ? true : false}
-            cssOverride={override}
-            size={28}
-            aria-label='Loading Spinner'
-            data-testid='loader'
-          />
-        ) : (
-          <div className='max-w-max mx-auto flex flex-col items-center'>
-                      <motion.h1
-  initial={{ scale: [0], rotate: [0] }}
-  animate={{
-    scale: [0, 0.2, 0.4, 1, 0.8, 1],
-    rotate: [],
-  }}
-  className='mb-5 absolute top-5 right-10 text-sm flex items-center font-normal space-x-1'
->
-  <AccessAlarmsRounded
-                      color='white'
-                      style={{ fontSize: 25, color: "#F5900C" }}
-                    />
-<div className={textTheme}>
-<span className="font-bold">{totalLeft} Index</span> left to claim</div>
-</motion.h1>
-
-            <motion.h1
-  initial={{ scale: [0], rotate: [0] }}
-  animate={{
-    scale: [0, 0.2, 0.4, 1, 0.8, 1],
-    rotate: [],
-  }}
-  className='mb-5 text-xl font-bold'
->
-  <center>
-    <Image
-      src={"/assets/images/token.png"}
-      alt='Logo'
-      width={100}
-      height={100}
-      className='rotating-image' // Apply the CSS class here
-    />
-  </center>
-  <div className={textTheme}>Rewards: You have {points||0} Index</div>
-</motion.h1>
-            <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
-              <h2 className='mb-5'>{props.title}</h2>
-              <div className='flex flex-wrap md:flex-nowrap'>
-                {boxDays.map((box) => {
-                  return (
-                    <Box key={box.day} day={box.day} sticks={box.points} />
-                  );
-                })}
-              </div>
-              <p className='mt-4'>
-                Nice! You can pick up{" "}
-                <span className='text-teal-600 font-bold'>{dailyClaimed}</span>{" "}
-                $INDEX 🚀 next time you log into BandBindex.
-              </p>
-
-              <p className='mb-2'>
-                Log in 7 days in a row, your rewards will grow.
-              </p>
-
-              <button
-                onClick={onClaim}
-                disabled={Claimed}
-                className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100'
-              >
-                {Claimed ? (
-                  <>
-                    Come back in <TiTime /> {timeLeft}
-                  </>
-                ) : (
-                  <> Collect {dailyClaimed} Sticks</>
-                )}{" "}
-              </button>
-
-              <SlideIn
-                isOpen={isOpen}
-                onClose={() => {
-                  setIsOpen(false);
-                  updatePoints();
+      <div className={` ${colorTheme} relative flex flex-col`}>
+        <div className='min-h-[100vh] px-5 flex items-center'>
+          {points === null ? (
+            <PacmanLoader
+              color={"#F5900C"}
+              loading={points === null ? true : false}
+              cssOverride={override}
+              size={28}
+              aria-label='Loading Spinner'
+              data-testid='loader'
+            />
+          ) : (
+            <div className='max-w-max mx-auto flex flex-col items-center'>
+              <motion.h1
+                initial={{ scale: [0], rotate: [0] }}
+                animate={{
+                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
+                  rotate: [],
                 }}
-              />
+                className='mb-5 absolute top-5 right-10 text-sm flex items-center font-normal space-x-1'
+              >
+                <AccessAlarmsRounded
+                  color='white'
+                  style={{ fontSize: 25, color: "#F5900C" }}
+                />
+                <div className={textTheme}>
+                  <span className='font-bold'>{totalLeft} Index</span> left to
+                  claim
+                </div>
+              </motion.h1>
+
+              <motion.h1
+                initial={{ scale: [0], rotate: [0] }}
+                animate={{
+                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
+                  rotate: [],
+                }}
+                className='mb-5 text-xl font-bold'
+              >
+                <center>
+                  <Image
+                    src={"/assets/images/token.png"}
+                    alt='Logo'
+                    width={100}
+                    height={100}
+                    className='rotating-image' // Apply the CSS class here
+                  />
+                </center>
+                <div className={textTheme}>
+                  Rewards: You have {points || 0} Index
+                </div>
+              </motion.h1>
+              <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
+                <h2 className='mb-5'>{props.title}</h2>
+                <div className='flex flex-wrap md:flex-nowrap'>
+                  {boxDays.map((box) => {
+                    return (
+                      <Box key={box.day} day={box.day} sticks={box.points} />
+                    );
+                  })}
+                </div>
+                <p className='mt-4'>
+                  Nice! You can pick up{" "}
+                  <span className='text-teal-600 font-bold'>
+                    {dailyClaimed}
+                  </span>{" "}
+                  $INDEX 🚀 next time you log into BandBindex.
+                </p>
+
+                <p className='mb-2'>
+                  Log in 7 days in a row, your rewards will grow.
+                </p>
+
+                <button
+                  onClick={onClaim}
+                  disabled={Claimed}
+                  className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100'
+                >
+                  {Claimed ? (
+                    <>
+                      Come back in <TiTime /> {timeLeft}
+                    </>
+                  ) : (
+                    <> Collect {dailyClaimed} Sticks</>
+                  )}{" "}
+                </button>
+
+                <SlideIn
+                  isOpen={isOpen}
+                  onClose={() => {
+                    setIsOpen(false);
+                    updatePoints();
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+      <Footer />
     </div>
   );
 };
