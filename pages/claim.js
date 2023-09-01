@@ -262,7 +262,7 @@ const Claim = (props) => {
                   style={{ fontSize: 25, color: "#F5900C" }}
                 />&nbsp;
                 <div className={textTheme}>
-                BandBers, there's only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
+                BandBers, there&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to
                   claim
                 </div>
               </motion.h1>
