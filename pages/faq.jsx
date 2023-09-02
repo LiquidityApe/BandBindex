@@ -10,7 +10,7 @@ const FAQ = () => {
 
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const backgroundTheme = theme
-    ? "bg-[conic-gradient(at_right,#F5900c,#FDE089, #FFFFFF)]"
+  ? "bg-gradient-to-l from-[#F5900c] to-white"
     : "bg-gradient-to-l from-[#F5900c] to-slate-950";
 
   const questions = [
