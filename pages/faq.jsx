@@ -15,24 +15,9 @@ const FAQ = () => {
 
   const questions = [
     {
-      question: "What is Bear and Bull Index?",
+      question: "How can I explore partnership or investment opportunities?",
       answer:
-        "The Bear and Bull Index is a tool designed to harness AI-driven social insights to make more informed decisions in the crypto market.",
-    },
-    {
-      question: "What is the relationship between BandB, BandBindex and Index?",
-      answer:
-        "The BandB community is the project's core, encouraging engagement. BandBIndex is a trading tool within the community, and $INDEX is an in-app token for rewarding and enhancing the user experience.",
-    },
-    {
-      question: "How does LunarCrush power BandBindex?",
-      answer:
-        "BandBindex is powered by LunarCrush's cutting-edge AI capabilities that transform extensive social metrics into actionable, digestible insights.",
-    },
-    {
-      question: "What is the $INDEX token?",
-      answer:
-        "$INDEX is an in-app reward token, designed to incentivize community participation and enhance the user experience within BandBindex.",
+        "Please complete this form for further information: https://forms.gle/ABp9GiR4uSxLFQWq6",
     },
     {
       question: "How frequently can I claim my rewards?",
@@ -40,14 +25,70 @@ const FAQ = () => {
         "You can claim your rewards once every 24 hours. Make sure to log in daily to maximize your rewards!",
     },
     {
+      question: "How is your predictive analysis generated?",
+      answer:
+        "Analyzing the last 7 days of historical data reveals patterns and sentiments that inform our predictive insights for cryptocurrency market decisions.",
+    },
+    {
+      question: "How should I use the information and indicators effectively?",
+      answer:
+        "Explore BandB AI-Report Insights for simplified market analysis, empowering confident decision-making without expertise.",
+    },
+    {
+      question: "From which sources do you obtain your data?",
+      answer:
+        "We collect data from trusted sources like LunarCrush, CoinGecko, and others for accuracy and reliability.",
+    },
+    {
+      question: "What is the relationship between BandB, BandBindex and Index?",
+      answer:
+        "The BandB community is the project's core, encouraging engagement. BandBIndex is a trading tool within the community, and $INDEX is an in-app token for rewarding and enhancing the user experience.",
+    },
+    {
+      question: "What is Bear and Bull Index?",
+      answer:
+        "The Bear and Bull Index is a tool designed to harness AI-driven social insights to make more informed decisions in the crypto market.",
+    },
+    {
+      question: "What is the $INDEX token?",
+      answer:
+        "$INDEX is an in-app reward token, designed to incentivize community participation and enhance the user experience within BandBindex.",
+    },
+    {
+      question: "What is the level of accuracy of the provided data?",
+      answer:
+        "Our data is highly accurate, sourced from trusted providers, but please consider the volatile nature of the cryptocurrency market and use our data as a reference alongside your own judgment.",
+    },
+    {
+      question: "What is the relationship between BandB, BandBindex and Index?",
+      answer:
+        "The BandB community is the project's core, encouraging engagement. BandBIndex is a trading tool within the community, and $INDEX is an in-app token for rewarding and enhancing the user experience.",
+    },
+    {
+      question: "What is the process for obtaining additional insights?",
+      answer:
+        "We strongly recommend LunarCrush for comprehensive additional social insights.",
+    },
+    {
       question: "Why is social insight important for crypto trading?",
       answer:
         "Social insights provide real-time trends and patterns in the crypto community's discussions. These can be pivotal in deciphering market volatilities and making informed decisions.",
+    },
+    {
+      question: "Who can gain from utilizing this?",
+      answer:
+        "Anyone in the cryptocurrency market can benefit from our platform. We provide valuable insights for confident decision-making.",
+    },
+    {
+      question: "Who gains more benefits: a trader or an investor?",
+      answer:
+        "Trader or investor: it depends on your goals and risk tolerance.",
     },
   ];
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+    questions.sort((a, b) => a.question.localeCompare(b.question));
   };
 
   return (
