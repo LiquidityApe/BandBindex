@@ -28,9 +28,11 @@ export default async function (req, res) {
 
     let dailyClaim = userDoc.dailyClaim;
     // Progress claim logic
-    if (dailyClaim < 35) {
+    if (!dailyClaim) {
+      dailyClaim = 5;
+    } else if (dailyClaim < 35) {
       dailyClaim += 5;
-    }else if (dailyClaim >= 35) {
+    } else if (dailyClaim >= 35) {
       dailyClaim = 5;
     }
 
