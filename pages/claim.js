@@ -17,7 +17,8 @@ import { PacmanLoader } from "react-spinners";
 import AccessAlarmsRounded from "@mui/icons-material/AccessAlarmsRounded";
 import Footer from "@/Components/Footer";
 import BackToTopButton from "@/Components/BackToTopButton";
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
+import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
+import CountdownToLaunch from "@/Components/CountdownToLaunch";
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -31,7 +32,9 @@ const Claim = (props) => {
   const [dailyClaimed, setDailyClaimed] = useState(null);
   const { theme } = useSelector((state) => state.Theme);
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
+  const textTheme2 = theme ? "text-teal-100" : "text-teal-950";
   const colorTheme = theme ? "bg-[#EDF1E4]" : "bg-slate-950";
+  const colorTheme2 = !theme ? "bg-[#EDF1E4]" : "bg-slate-950";
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? "https://bandbindex.com/"
@@ -148,6 +151,9 @@ const Claim = (props) => {
   return (
     <div className={textTheme}>
       <div className={` ${colorTheme} relative flex flex-col`}>
+        <div className='relative top-10'>
+          <CountdownToLaunch />
+        </div>
         <div className='min-h-[100vh] px-5 flex items-center'>
           {points === null ? (
             <PacmanLoader
@@ -160,30 +166,28 @@ const Claim = (props) => {
             />
           ) : (
             <div className='max-w-max mx-auto flex flex-col items-center'>
-<motion.h1
-  initial={{ scale: [0], rotate: [0] }}
-  animate={{
-    scale: [0, 0.2, 0.4, 1, 0.8, 1],
-    rotate: [],
-  }}
-  className='mb-5 absolute top-5 right-4 text-sm flex items-center justify-center font-normal space-x-1'
->
-  <AnnouncementOutlinedIcon
-    color='white'
-    style={{ fontSize: 25, color: "#F5900C" }}
-  />
-  <div className={textTheme}>
-    <a
-      href='https://discord.com/channels/1141795377180311563/1141795377968853166'
-      target='_blank'
-      rel='noopener noreferrer'
-    >
-      Give Feedback
-    </a>
-  </div>
-</motion.h1>
-
-
+              <motion.h1
+                initial={{ scale: [0], rotate: [0] }}
+                animate={{
+                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
+                  rotate: [],
+                }}
+                className='mb-5 absolute top-5 right-4 text-sm flex items-center justify-center font-normal space-x-1'
+              >
+                <AnnouncementOutlinedIcon
+                  color='white'
+                  style={{ fontSize: 25, color: "#F5900C" }}
+                />
+                <div className={textTheme}>
+                  <a
+                    href='https://discord.com/channels/1141795377180311563/1141795377968853166'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    Give Feedback
+                  </a>
+                </div>
+              </motion.h1>
 
               <motion.h1
                 initial={{ scale: [0], rotate: [0] }}
@@ -216,7 +220,7 @@ const Claim = (props) => {
                   })}
                 </div>
                 <p className='mt-4'>
-                Get ready to claim {" "}
+                  Get ready to claim{" "}
                   <span className='text-teal-600 font-bold'>
                     {dailyClaimed}
                   </span>{" "}
@@ -224,13 +228,13 @@ const Claim = (props) => {
                 </p>
 
                 <p className='mb-2'>
-                Unlock bigger rewards by logging in for 7 days straight.
+                  Unlock bigger rewards by logging in for 7 days straight.
                 </p>
 
                 <button
                   onClick={onClaim}
                   disabled={Claimed}
-                  className='w-full py-2 flex justify-center items-center rounded bg-gray-800 disabled:bg-gray-500 text-teal-100'
+                  className={`w-full py-2 flex justify-center items-center rounded ${colorTheme2} ${textTheme2} disabled:bg-gray-500`}
                 >
                   {Claimed ? (
                     <>
@@ -250,29 +254,34 @@ const Claim = (props) => {
                 />
               </div>
               {totalLeft !== null && (
-  <motion.h1
-    initial={{ scale: [0], rotate: [0] }}
-    animate={{
-      scale: [0, 0.2, 0.4, 1, 0.8, 1],
-      rotate: [],
-    }}
-    className='mb-5 text-sm flex items-center font-normal'
-  >
-    <AccessAlarmsRounded
-      color='white'
-      style={{ fontSize: 25, color: "#F5900C" }}
-    />&nbsp;
-    <div className={textTheme}>
-      There&apos;s only <span className='font-bold'>{totalLeft.toLocaleString()} Index</span> left to claim
-    </div>
-  </motion.h1>
-)}
+                <motion.h1
+                  initial={{ scale: [0], rotate: [0] }}
+                  animate={{
+                    scale: [0, 0.2, 0.4, 1, 0.8, 1],
+                    rotate: [],
+                  }}
+                  className='mb-5 text-sm flex items-center font-normal'
+                >
+                  <AccessAlarmsRounded
+                    color='white'
+                    style={{ fontSize: 25, color: "#F5900C" }}
+                  />
+                  &nbsp;
+                  <div className={textTheme}>
+                    There&apos;s only{" "}
+                    <span className='font-bold'>
+                      {totalLeft.toLocaleString()} Index
+                    </span>{" "}
+                    left to claim
+                  </div>
+                </motion.h1>
+              )}
             </div>
           )}
         </div>
         <b>
           <BackToTopButton />
-        </b>        
+        </b>
       </div>
       <Footer />
     </div>

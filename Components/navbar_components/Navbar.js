@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { HiOutlineX } from "react-icons/hi";
-import { HiOutlineMenu} from "react-icons/hi";
+import { HiOutlineMenu } from "react-icons/hi";
 import { useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import NightModeIcon from "@mui/icons-material/Nightlight";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
+import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import OutsideClickHandler from "react-outside-click-handler";
 import Swal from "sweetalert";
 
@@ -16,19 +16,16 @@ import Image from "next/image";
 import { setTheme } from "@/store/reducers/Theme";
 import { Web3Button } from "@web3modal/react";
 import { useAccount, useBalance } from "wagmi";
-import {
-  updateAddress,
-  setBalance,
-} from "@/store/reducers/AppReducer";
+import { updateAddress, setBalance } from "@/store/reducers/AppReducer";
 import axios from "axios";
 
 const Navbar = ({ children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showmenu, setShowmenu] = useState(false);
   const dispatch = useDispatch();
-  const { theme } = useSelector((state) => state.Theme);
   const { User, token } = useSelector((state) => state.App);
   // const textTheme = theme ? "text-slate-950" : "text-slate-400";
+  const { theme } = useSelector((state) => state.Theme);
   const backgroundTheme = theme ? "bg-slate-50" : "bg-[#0A0D0D]";
   const navbarRef = useRef(null);
 
@@ -74,7 +71,6 @@ const Navbar = ({ children }) => {
   const { data, isError, isLoading } = useBalance({
     address: address,
     token: token,
-    
   });
 
   const sendWalletAddress = async () => {
@@ -105,13 +101,12 @@ const Navbar = ({ children }) => {
     } else {
       dispatch(setBalance(0));
     }
-  }, [data,isLoading]);
+  }, [data, isLoading]);
   useEffect(() => {
     if (address) {
       dispatch(updateAddress(address));
       sendWalletAddress();
-    }else{
-      
+    } else {
       dispatch(updateAddress(""));
     }
   }, [address]);
@@ -195,15 +190,17 @@ const Navbar = ({ children }) => {
                     duration: 0.1,
                   }}
                 >
- <Link legacyBehavior href=''>
-  <a onClick={(e) => {
-    e.preventDefault();
-    hideMenu();
-    handleClick();
-  }}>
-    {"Cryptocurrencies"}
-  </a>
-</Link>
+                  <Link legacyBehavior href=''>
+                    <a
+                      onClick={(e) => {
+                        e.preventDefault();
+                        hideMenu();
+                        handleClick();
+                      }}
+                    >
+                      {"Cryptocurrencies"}
+                    </a>
+                  </Link>
                 </motion.li>
                 <motion.li
                   whileHover={{ scale: 1.2 }}
@@ -266,9 +263,7 @@ const Navbar = ({ children }) => {
                     )}
                   </i>
                 </div>
-                <Web3Button
-                  balance='hide'
-                />
+                <Web3Button balance='hide' />
               </div>
             </motion.ul>
           </menu>

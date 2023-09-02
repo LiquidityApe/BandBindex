@@ -10,7 +10,7 @@ const FAQ = () => {
 
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const backgroundTheme = theme
-    ? "bg-gradient-to-l from-[#F5900c] to-white"
+    ? "bg-[conic-gradient(at_right,#F5900c,#FDE089, #FFFFFF)]"
     : "bg-gradient-to-l from-[#F5900c] to-slate-950";
 
   const questions = [
@@ -23,7 +23,7 @@ const FAQ = () => {
       question: "What is the relationship between BandB, BandBindex and Index?",
       answer:
         "The BandB community is the project's core, encouraging engagement. BandBIndex is a trading tool within the community, and $INDEX is an in-app token for rewarding and enhancing the user experience.",
-    },    
+    },
     {
       question: "How does LunarCrush power BandBindex?",
       answer:
@@ -52,40 +52,42 @@ const FAQ = () => {
 
   return (
     <main className={` ${backgroundTheme} relative flex flex-col`}>
-    <div className={`${textTheme}`}>  
-    <div className='flex flex-col min-h-[160vh] md:min-h-[200vh] relative justify-start pt-[10vh] items-center'>
-      <h1 className='mb-10 text-2xl font-bold'>Frequently Asked Questions</h1>
-      <div className='w-[80%] md:w-full mb-10 max-w-xl'>
-        {questions.map((faq, index) => (
-          <div key={index} className='mb-4'>
-            <button
-              onClick={() => toggleFAQ(index)}
-              className='w-full text-left py-2 px-4 flex justify-between items-center bg-slate-950 text-teal-100 rounded'
-            >
-              <span>{faq.question}</span>
-              <FiChevronDown
-                className={`transition-transform duration-300 ${
-                  activeIndex === index ? "transform rotate-180" : ""
-                }`}
-              />
-            </button>
-            <div
-              className={`overflow-hidden transition-max-height duration-1000 ease-in-out ${
-                activeIndex === index ? "max-h-40" : "max-h-0"
-              }`}
-            >
-              <p className='bg-gray-100 mt-2 text-gray-700 p-4 rounded-b'>
-                {faq.answer}
-              </p>
-            </div>
+      <div className={`${textTheme}`}>
+        <div className='flex flex-col min-h-[160vh] md:min-h-[200vh] relative justify-start pt-[10vh] items-center'>
+          <h1 className='mb-10 text-2xl font-bold'>
+            Frequently Asked Questions
+          </h1>
+          <div className='w-[80%] md:w-full mb-10 max-w-xl'>
+            {questions.map((faq, index) => (
+              <div key={index} className='mb-4'>
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className='w-full text-left py-2 px-4 flex justify-between items-center bg-slate-950 text-teal-100 rounded'
+                >
+                  <span>{faq.question}</span>
+                  <FiChevronDown
+                    className={`transition-transform duration-300 ${
+                      activeIndex === index ? "transform rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-max-height duration-1000 ease-in-out ${
+                    activeIndex === index ? "max-h-40" : "max-h-0"
+                  }`}
+                >
+                  <p className='bg-gray-100 mt-2 text-gray-700 p-4 rounded-b'>
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className='absolute bottom-0'>
+          <Footer />
+        </div>
       </div>
-    </div>
-    <div className='absolute bottom-0'>
-        <Footer />
-      </div>
-    </div>
     </main>
   );
 };
