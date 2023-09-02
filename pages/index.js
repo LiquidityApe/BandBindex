@@ -222,7 +222,7 @@ export default function Home() {
         </h4>
         <section className='mx-[2vw] flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-[4vh]'>
           <div>
-            {points >= 100 || balance >= 100 ? (
+            {points >= 0 || balance >= 0 ? (
               <InsightsCard
                 tooltip='Historical Analysis refers to a concise overview of the BandBindex data spanning a 7-day period. It offers insights into trends, patterns, and changes that have occurred within this timeframe.'
                 text='Historical Analysis'
@@ -243,7 +243,7 @@ export default function Home() {
           </div>
 
           <div>
-            {points >= 100 || balance >= 100 ? (
+            {points >= 0 || balance >= 0 ? (
               <InsightsCard
                 tooltip='Actionable Insights refer to the presentation of both Buy the Dip (BTD) and Sell the Pump (STP) signals. These insights assist users in identifying potential opportunities for buying or selling based on shifts in market sentiment.'
                 text='Actionable Insight'
@@ -301,7 +301,7 @@ export default function Home() {
           </div>
 
           <div>
-            {points >= 100 || balance >= 100 ? (
+            {points >= 0 || balance >= 0 ? (
               <InsightsCard
                 today={data?.today?.MSA}
                 yesterday={data?.yesterday?.MSA}
@@ -323,7 +323,7 @@ export default function Home() {
             )}
           </div>
 
-          {points >= 100 || balance >= 100 ? (
+          {points >= 0 || balance >= 0 ? (
             <>
               <InsightsCard
                 today={data?.today?.SAS}
@@ -348,7 +348,7 @@ export default function Home() {
             )
           )}
 
-          {points >= 100 || balance >= 100 ? (
+          {points >= 0 || balance >= 0 ? (
             <InsightsCard
               today={data?.today?.RSI}
               yesterday={data?.yesterday?.RSI}

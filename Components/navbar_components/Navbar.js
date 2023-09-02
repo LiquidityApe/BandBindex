@@ -221,21 +221,24 @@ const Navbar = ({ children }) => {
               </div>
               <div className='icon flex w-[40%] justify-between items-center'>
                 <div className='flex justify-around relative left-[4vw] w-[40%] items-center'>
-                  <Link
-                    onClick={() => {
-                      User == "" ? handleClaim() : null;
-                    }}
-                    href={User == "" ? "#soon" : "/claim"}
-                    style={{ fontSize: 25, color: "#F5900C" }}
-                  >
-                    <DiamondOutlinedIcon
-                      style={{
-                        fontSize: 25,
-                        color: "#F5900C",
-                        cursor: "pointer",
-                      }}
-                    />
-                  </Link>
+                <Link
+  onClick={(e) => {
+    if (User === "") {
+      e.preventDefault(); // Prevent page reload
+      handleClaim();
+    }
+  }}
+  href={User === "" ? "#?user=claim" : "/claim"}
+  style={{ fontSize: 25, color: "#F5900C" }}
+>
+  <DiamondOutlinedIcon
+    style={{
+      fontSize: 25,
+      color: "#F5900C",
+      cursor: "pointer",
+    }}
+  />
+</Link>
 
                   <i
                     onClick={() => {
