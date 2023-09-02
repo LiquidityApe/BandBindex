@@ -172,7 +172,7 @@ const Claim = (props) => {
                   scale: [0, 0.2, 0.4, 1, 0.8, 1],
                   rotate: [],
                 }}
-                className='mb-5 absolute top-5 right-4 text-sm flex items-center justify-center font-normal space-x-1'
+                className='mb-5 absolute top-3 right-4 text-sm flex items-center justify-center font-normal space-x-1'
               >
                 <AnnouncementOutlinedIcon
                   color='white'
