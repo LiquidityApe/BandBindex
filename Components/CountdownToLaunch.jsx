@@ -51,27 +51,25 @@ const CountdownToLaunch = () => {
 
   return (
     <div
-      className={`p-4 ${backgroundTheme} ${textTheme} w-[40%] mx-auto rounded-md shadow-md`}
+      className={`p-4 ${backgroundTheme} ${textTheme} mx-4 md:mx-auto rounded-md shadow-md text-center max-w-xl`}
     >
-      <h2 className='text-xl font-bold text-center mb-4 '>
-        Time until Launch:
-      </h2>
-      <div className='flex justify-around'>
-        <div>
-          <span className='text-3xl '>{timeRemaining.days}</span>
-          <div className=''>Days</div>
+      <h2 className='text-xl font-bold mb-2'>Time until MVP Launch:</h2>
+      <div className='flex flex-col md:flex-row justify-center md:justify-between'>
+        <div className='mb-2 md:mb-0'>
+          <span className='text-3xl'>{timeRemaining.days}</span>
+          <div>Days</div>
+        </div>
+        <div className='mb-2 md:mb-0'>
+          <span className='text-3xl'>{timeRemaining.hours}</span>
+          <div>Hours</div>
+        </div>
+        <div className='mb-2 md:mb-0'>
+          <span className='text-3xl'>{timeRemaining.minutes}</span>
+          <div>Minutes</div>
         </div>
         <div>
-          <span className='text-3xl '>{timeRemaining.hours}</span>
-          <div className=''>Hours</div>
-        </div>
-        <div>
-          <span className='text-3xl '>{timeRemaining.minutes}</span>
-          <div className=''>Minutes</div>
-        </div>
-        <div>
-          <span className='text-3xl '>{timeRemaining.seconds}</span>
-          <div className=''>Seconds</div>
+          <span className='text-3xl'>{timeRemaining.seconds}</span>
+          <div>Seconds</div>
         </div>
       </div>
     </div>
