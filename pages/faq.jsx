@@ -96,7 +96,7 @@ const FAQ = () => {
       <div className={`${textTheme}`}>
         <div className='flex flex-col min-h-[160vh] md:min-h-[200vh] relative justify-start pt-[10vh] items-center'>
           <h1 className='mb-10 text-2xl font-bold'>
-            Frequently Asked Questions
+            <span className={`${textTheme}`}>Frequently Asked Questions</span>
           </h1>
           <div className='w-[80%] md:w-full mb-10 max-w-xl'>
             {questions.map((faq, index) => (
