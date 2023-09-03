@@ -9,15 +9,30 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
+  const textTheme2 = !theme ? "text-slate-950" : "text-slate-300";
   const backgroundTheme = theme
-  ? "bg-gradient-to-l from-[#F5900c] to-white"
+    ? "bg-gradient-to-l from-[#F5900c] to-white"
+    : "bg-gradient-to-l from-[#F5900c] to-slate-950";
+  const backgroundTheme2 = !theme
+    ? "bg-gradient-to-l from-[#F5900c] to-white"
     : "bg-gradient-to-l from-[#F5900c] to-slate-950";
 
   const questions = [
     {
       question: "How can I explore partnership or investment opportunities?",
-      answer:
-        "Please complete this form for further information: https://forms.gle/ABp9GiR4uSxLFQWq6",
+      answer: (
+        <>
+          Please complete this form for further information:{" "}
+          <a
+            href='https://forms.gle/ABp9GiR4uSxLFQWq6'
+            target='_blank'
+            className='underline hover:text-Gold'
+            rel='noopener noreferrer'
+          >
+            https://forms.gle/ABp9GiR4uSxLFQWq6
+          </a>
+        </>
+      ),
     },
     {
       question: "How frequently can I claim my rewards?",
@@ -60,11 +75,6 @@ const FAQ = () => {
         "Our data is highly accurate, sourced from trusted providers, but please consider the volatile nature of the cryptocurrency market and use our data as a reference alongside your own judgment.",
     },
     {
-      question: "What is the relationship between BandB, BandBindex and Index?",
-      answer:
-        "The BandB community is the project's core, encouraging engagement. BandBIndex is a trading tool within the community, and $INDEX is an in-app token for rewarding and enhancing the user experience.",
-    },
-    {
       question: "What is the process for obtaining additional insights?",
       answer:
         "We strongly recommend LunarCrush for comprehensive additional social insights.",
@@ -94,7 +104,7 @@ const FAQ = () => {
   return (
     <main className={` ${backgroundTheme} relative flex flex-col`}>
       <div className={`${textTheme}`}>
-        <div className='flex flex-col min-h-[160vh] md:min-h-[200vh] relative justify-start pt-[10vh] items-center'>
+        <div className='flex flex-col min-h-max relative justify-start pt-[10vh] items-center'>
           <h1 className='mb-10 text-2xl font-bold'>
             <span className={`${textTheme}`}>Frequently Asked Questions</span>
           </h1>
@@ -117,7 +127,9 @@ const FAQ = () => {
                     activeIndex === index ? "max-h-40" : "max-h-0"
                   }`}
                 >
-                  <p className='bg-gray-100 mt-2 text-gray-700 p-4 rounded-b'>
+                  <p
+                    className={`${textTheme2} ${backgroundTheme2} mt-2  p-4 rounded-b`}
+                  >
                     {faq.answer}
                   </p>
                 </div>
@@ -125,7 +137,7 @@ const FAQ = () => {
             ))}
           </div>
         </div>
-        <div className='absolute bottom-0'>
+        <div className=''>
           <Footer />
         </div>
       </div>
