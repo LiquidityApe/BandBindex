@@ -10,7 +10,7 @@ const FAQ = () => {
 
   const textTheme = theme ? "text-slate-950" : "text-slate-300";
   const backgroundTheme = theme
-    ? "bg-[conic-gradient(at_right,#F5900c,#FDE089, #FFFFFF)]"
+  ? "bg-gradient-to-l from-[#F5900c] to-white"
     : "bg-gradient-to-l from-[#F5900c] to-slate-950";
 
   const questions = [
@@ -96,7 +96,7 @@ const FAQ = () => {
       <div className={`${textTheme}`}>
         <div className='flex flex-col min-h-[160vh] md:min-h-[200vh] relative justify-start pt-[10vh] items-center'>
           <h1 className='mb-10 text-2xl font-bold'>
-            Frequently Asked Questions
+            <span className={`${textTheme}`}>Frequently Asked Questions</span>
           </h1>
           <div className='w-[80%] md:w-full mb-10 max-w-xl'>
             {questions.map((faq, index) => (
