@@ -51,27 +51,35 @@ const CountdownToLaunch = () => {
 
   return (
     <div
-      className={`p-4 ${backgroundTheme} ${textTheme} w-[40%] mx-auto rounded-md shadow-md`}
+      className={`p-4 ${backgroundTheme} ${textTheme} w-[70%] md:w-[40%] mx-auto rounded-md shadow-md`}
     >
       <h2 className='text-xl font-bold text-center mb-4 '>
         Time until Launch:
       </h2>
       <div className='flex justify-around'>
-        <div>
-          <span className='text-3xl '>{timeRemaining.days}</span>
-          <div className=''>Days</div>
+        <div className='flex flex-col items-center'>
+          <span className=' text-2xl md:text-3xl '>{timeRemaining.days}</span>
+          <div className='hidden md:flex'>Days</div>
+          <div className='flex text-sm md:hidden'>D</div>
         </div>
-        <div>
-          <span className='text-3xl '>{timeRemaining.hours}</span>
-          <div className=''>Hours</div>
+        <div className='flex flex-col items-center'>
+          <span className=' text-2xl md:text-3xl '>{timeRemaining.hours}</span>
+          <div className='hidden md:flex'>Hours</div>
+          <div className='flex text-sm md:hidden'>H</div>
         </div>
-        <div>
-          <span className='text-3xl '>{timeRemaining.minutes}</span>
-          <div className=''>Minutes</div>
+        <div className='flex flex-col items-center'>
+          <span className=' text-2xl md:text-3xl '>
+            {timeRemaining.minutes}
+          </span>
+          <div className='hidden md:flex'>Minutes</div>
+          <div className='flex text-sm md:hidden'>M</div>
         </div>
-        <div>
-          <span className='text-3xl '>{timeRemaining.seconds}</span>
-          <div className=''>Seconds</div>
+        <div className='flex flex-col items-center'>
+          <span className=' text-2xl md:text-3xl '>
+            {timeRemaining.seconds}
+          </span>
+          <div className='hidden md:flex'>Seconds</div>
+          <div className='flex text-sm md:hidden'>S</div>
         </div>
       </div>
     </div>

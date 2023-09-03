@@ -150,11 +150,13 @@ const Claim = (props) => {
 
   return (
     <div className={textTheme}>
-      <div className={` ${colorTheme} relative flex flex-col`}>
-        <div className='relative top-10'>
+      <div
+        className={` ${colorTheme} relative min-h-screen flex  justify-around flex-col`}
+      >
+        <div className='relative top-[2vh]'>
           <CountdownToLaunch />
         </div>
-        <div className='min-h-[100vh] px-5 flex items-center'>
+        <div className='px-5 flex items-center'>
           {points === null ? (
             <PacmanLoader
               color={"#F5900C"}
@@ -172,7 +174,7 @@ const Claim = (props) => {
                   scale: [0, 0.2, 0.4, 1, 0.8, 1],
                   rotate: [],
                 }}
-                className='mb-5 absolute top-5 right-4 text-sm flex items-center justify-center font-normal space-x-1'
+                className='mb-5 absolute top-3 right-3 text-sm flex items-center justify-center font-normal space-x-1'
               >
                 <AnnouncementOutlinedIcon
                   color='white'
@@ -212,7 +214,7 @@ const Claim = (props) => {
               </motion.h1>
               <div className=' flex flex-col items-start text-[13px] mb-5 rectangular-component'>
                 <h2 className='mb-5'>{props.title}</h2>
-                <div className='flex flex-wrap md:flex-nowrap'>
+                <div className='flex flex-wrap justify-start md:flex-nowrap'>
                   {boxDays.map((box) => {
                     return (
                       <Box key={box.day} day={box.day} sticks={box.points} />
@@ -279,9 +281,9 @@ const Claim = (props) => {
             </div>
           )}
         </div>
-        <b>
+        {/* <b>
           <BackToTopButton />
-        </b>
+        </b> */}
       </div>
       <Footer />
     </div>
