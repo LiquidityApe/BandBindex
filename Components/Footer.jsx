@@ -157,7 +157,7 @@ const Footer = () => {
           <p>
             {" "}
             <a
-              href='https://bandbindex.gitbook.io/bandbindex-2.0-whitepaper/project-details/disclaimer'
+              href='https://bandbindex.gitbook.io/bandbindex-2.0-whitepaper/'
               target='_blank'
               rel='noopener noreferrer'
               className={`${backgroundTheme2} ${textTheme2} hover:text-[#f5900c]`}
@@ -250,30 +250,40 @@ const Footer = () => {
           <a
             href='https://twitter.com/BandBindex'
             style={{ background: "#33383b" }}
+            target='_blank'
+            rel='noopener noreferrer'            
           >
             <TwitterIcon />
           </a>
           <a
             href='https://t.me/bandbindex_official'
             style={{ background: "#33383b" }}
+            target='_blank'
+            rel='noopener noreferrer'            
           >
             <TelegramIcon />
           </a>
           <a
-            href='https://discord.gg/XjkjJV65vV'
+            href='https://discord.gg/gExxutNThJ'
             style={{ background: "#33383b" }}
+            target='_blank'
+            rel='noopener noreferrer'            
           >
             <ForumOutlinedIcon />
           </a>          
           <a
             href='https://www.linkedin.com/company/bandbindex/'
             style={{ background: "#33383b" }}
+            target='_blank'
+            rel='noopener noreferrer'            
           >
             <LinkedInIcon />
           </a>
           <a
             href='https://github.com/LiquidityApe/BandBindex'
             style={{ background: "#33383b" }}
+            target='_blank'
+            rel='noopener noreferrer'            
           >
             <GitHubIcon />
           </a>
