@@ -168,13 +168,13 @@ const Claim = (props) => {
             />
           ) : (
             <div className='max-w-max mx-auto flex flex-col items-center'>
-              <motion.h1
+                            <motion.h1
                 initial={{ scale: [0], rotate: [0] }}
                 animate={{
                   scale: [0, 0.2, 0.4, 1, 0.8, 1],
                   rotate: [],
                 }}
-                className='mb-5 absolute top-3 right-3 text-sm flex items-center justify-center font-normal space-x-1'
+                className='mb-5 absolute top-3 right-4 text-sm flex items-center justify-center font-normal space-x-1'
               >
                 <AnnouncementOutlinedIcon
                   color='white'
@@ -182,7 +182,7 @@ const Claim = (props) => {
                 />
                 <div className={textTheme}>
                   <a
-                    href='https://discord.com/channels/1141795377180311563/1141795377968853166'
+                    href='https://discord.gg/gExxutNThJ'
                     target='_blank'
                     rel='noopener noreferrer'
                   >

@@ -157,7 +157,7 @@ const Footer = () => {
           <p>
             {" "}
             <a
-              href='https://bandbindex.gitbook.io/bandbindex-2.0-whitepaper/project-details/disclaimer'
+              href='https://bandbindex.gitbook.io/bandbindex-2.0-whitepaper/'
               target='_blank'
               rel='noopener noreferrer'
               className={`${backgroundTheme2} ${textTheme2} hover:text-[#f5900c]`}
@@ -260,7 +260,7 @@ const Footer = () => {
             <TelegramIcon />
           </a>
           <a
-            href='https://discord.gg/XjkjJV65vV'
+            href='https://discord.gg/gExxutNThJ'
             style={{ background: "#33383b" }}
           >
             <ForumOutlinedIcon />
