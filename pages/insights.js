@@ -14,7 +14,7 @@ import Footer from "@/Components/Footer";
 const openSubscriptionPage = () => {
   // Replace this URL with the actual subscription page URL
   window.open(
-    "https://discord.gg/9quGSNpq",
+    "https://discord.gg/Ck4jne7bXz",
     "_blank"
   );
 };
