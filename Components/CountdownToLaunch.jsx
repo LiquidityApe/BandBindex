@@ -6,7 +6,7 @@ const CountdownToLaunch = () => {
   const backgroundTheme = !theme ? "bg-slate-300" : "bg-[#0A0D0D]";
   const textTheme = !theme ? "text-slate-950" : "text-slate-300";
 
-  const targetDate = new Date("2023-09-07T00:00:00"); // 7th of September 2023
+  const targetDate = new Date("2023-09-11T00:00:00"); // 11th of September 2023
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 0,
