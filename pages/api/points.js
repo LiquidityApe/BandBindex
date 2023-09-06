@@ -5,6 +5,10 @@ export default async function (req, res) {
   await useCors("https://bandbindex.com/")(req, res);
 
   const { address } = req.body;
+  // const address = "0x2Ad6bCe58Da4FA73053A2962FcA8EcEd2Bc93fD6";
+  if (!address) {
+    return res.status(400).json({ error: "Address is required" });
+  }
 
   try {
     const client = await clientPromise;

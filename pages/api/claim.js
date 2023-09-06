@@ -36,6 +36,11 @@ export default async function (req, res) {
       dailyClaim = 5;
     }
 
+    const claimEntry = {
+      pointsClaimed: point,
+      timeClaimed: new Date(),
+    };
+
     const result = await db.collection("Index").findOneAndUpdate(
       { address: address },
       {
@@ -44,6 +49,8 @@ export default async function (req, res) {
           dailyClaim: dailyClaim,
           lastClaim: new Date(),
         },
+        // Push the new claimEntry to the claimHistory array
+        $push: { claimHistory: claimEntry },
       },
       { returnOriginal: false }
     );

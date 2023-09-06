@@ -8,12 +8,6 @@ import { createWrapper } from "next-redux-wrapper";
 import Theme from "./reducers/Theme";
 // import { useDispatch, useSelector } from 'react-redux'
 
-const persistConfig = {
-  key: "root",
-  storage: storage,
-  blacklist: ["App"],
-};
-
 const allReducers = combineReducers({
   App: AppReducer,
   Theme: Theme,

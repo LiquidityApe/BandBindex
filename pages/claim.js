@@ -85,40 +85,34 @@ const Claim = (props) => {
   }, [lastClaimed]);
 
   const updatePoints = () => {
-    const address = User;
+    // Create a function to fetch totalClaim
+    const fetchTotalClaim = axios.post(`${baseUrl}/api/totalClaim`);
 
-    // Define the baseUrl
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? "https://bandbindex.com"
-        : "http://localhost:3000";
+    // Create another function to fetch points
+    const fetchPoints = axios.post(`${baseUrl}/api/points`, { address: User });
 
-    // Make a POST request to /api/totalClaim to get total index left
+    // Use Promise.all to execute both requests concurrently
+    Promise.all([fetchTotalClaim, fetchPoints])
+      .then((responses) => {
+        const totalClaimResponse = responses[0];
+        const pointsResponse = responses[1];
 
-    axios
-      .post(`${baseUrl}/api/totalClaim`)
-      .then((res) => {
-        const indexLeft = 1000000 - res.data.totalPoints;
+        // Handle the totalClaim response
+        const indexLeft = 1000000 - totalClaimResponse.data.totalPoints;
         setTotalLeft(indexLeft);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
 
-    axios
-      .post(`${baseUrl}/api/points`, { address })
-      .then((res) => {
-        const claimData = res.data;
-        // Update the state variable with the returned points
-        console.log(claimData);
+        // Handle the points response
+        const claimData = pointsResponse.data;
         setPoints(claimData.points);
         setLastClaimed(claimData.lastClaim);
         setDailyClaimed(claimData.dailyClaim);
         dispatch(setDailyClaim(claimData.dailyClaim));
         dispatch(setPoint(claimData.points));
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.error("Error", error);
+        // You could also set some state here to show an error message to the user
+        // setErrorMessage('Failed to update points. Please try again.');
       });
   };
 
@@ -126,7 +120,7 @@ const Claim = (props) => {
     if (!points) {
       updatePoints();
     }
-  });
+  }, [isOpen, User]);
 
   // FUNCTIONS;
   const sendPoints = async (address, points) => {
@@ -153,10 +147,32 @@ const Claim = (props) => {
       <div
         className={` ${colorTheme} relative min-h-screen flex  justify-around flex-col`}
       >
+        <motion.h1
+          initial={{ scale: [0], rotate: [0] }}
+          animate={{
+            scale: [0, 0.2, 0.4, 1, 0.8, 1],
+            rotate: [],
+          }}
+          className='mb-5 absolute top-2 s:top-3 right-3 s:right-4 text-sm flex items-center justify-center font-normal space-x-1'
+        >
+          <AnnouncementOutlinedIcon
+            color='white'
+            style={{ fontSize: 25, color: "#F5900C" }}
+          />
+          <div className={textTheme}>
+            <a
+              href='https://discord.gg/gExxutNThJ'
+              target='_blank'
+              rel='noopener text-sm noreferrer'
+            >
+              Give Feedback
+            </a>
+          </div>
+        </motion.h1>
         <div className='relative top-[2vh]'>
           <CountdownToLaunch />
         </div>
-        <div className='px-5 flex items-center'>
+        <div className='px-5  relative bottom-[6vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
           {points === null ? (
             <PacmanLoader
               color={"#F5900C"}
@@ -167,30 +183,7 @@ const Claim = (props) => {
               data-testid='loader'
             />
           ) : (
-            <div className='max-w-max mx-auto flex flex-col items-center'>
-                            <motion.h1
-                initial={{ scale: [0], rotate: [0] }}
-                animate={{
-                  scale: [0, 0.2, 0.4, 1, 0.8, 1],
-                  rotate: [],
-                }}
-                className='mb-5 absolute top-3 right-4 text-sm flex items-center justify-center font-normal space-x-1'
-              >
-                <AnnouncementOutlinedIcon
-                  color='white'
-                  style={{ fontSize: 25, color: "#F5900C" }}
-                />
-                <div className={textTheme}>
-                  <a
-                    href='https://discord.gg/gExxutNThJ'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    Give Feedback
-                  </a>
-                </div>
-              </motion.h1>
-
+            <div className='max-w-max px-5 mx-auto  flex flex-col items-center'>
               <motion.h1
                 initial={{ scale: [0], rotate: [0] }}
                 animate={{
@@ -235,7 +228,7 @@ const Claim = (props) => {
 
                 <button
                   onClick={onClaim}
-                  disabled={Claimed}
+                  // disabled={Claimed}
                   className={`w-full py-2 flex justify-center items-center rounded ${colorTheme2} ${textTheme2} disabled:bg-gray-500`}
                 >
                   {Claimed ? (
@@ -250,8 +243,8 @@ const Claim = (props) => {
                 <SlideIn
                   isOpen={isOpen}
                   onClose={() => {
+                    // updatePoints();
                     setIsOpen(false);
-                    updatePoints();
                   }}
                 />
               </div>
