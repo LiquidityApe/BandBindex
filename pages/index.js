@@ -161,21 +161,6 @@ export default function Home() {
     );
   }
 
-  const fadeInFromBottom = {
-    hidden: {
-      opacity: 0,
-      y: 100, // initial vertical position
-    },
-    visible: {
-      opacity: 1,
-      y: 0, // end position
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <div className='flex items-center justify-center h-full flex-1'>
       <main className={` ${colorTheme} relative flex flex-col`}>
@@ -194,7 +179,7 @@ export default function Home() {
                   rel='noopener noreferrer'
                   className='hover:text-midorange transition-all duration-200'
                 >
-                  ${data.coin.symbol}
+                  ${data?.coin.symbol}
                 </a>
               </div>
             </h4>

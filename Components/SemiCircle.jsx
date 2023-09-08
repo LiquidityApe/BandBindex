@@ -1,10 +1,4 @@
-import { motion } from "framer-motion";
-
-const size = 200; // Adjust the size of the semi-circle
-
 const SemiCircle = ({ guage = -30 }) => {
-  const angle = 90; // Adjust the angle of the semi-circle (in degrees)
-
   return (
     <svg height='300' width='300'>
       <path

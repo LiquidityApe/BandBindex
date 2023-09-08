@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import theme from "../config/theme";
 import createEmotionCache from "../config/createEmotionCache";
-import { wrapper, persistor } from "../store/store";
+import { wrapper } from "../store/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
 import Navbar from "@/Components/navbar_components/Navbar";
@@ -18,11 +18,6 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { bsc, bscTestnet } from "wagmi/chains";
 
-// Redux Persist
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
-import { useStore } from "react-redux";
-import { useState } from "react";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -63,8 +58,11 @@ function App({ Component, ...rest }) {
                   name='viewport'
                   content='initial-scale=1, width=device-width'
                 />
-                <link rel="icon" href="/assets/images/favicon.ico" />
-                <meta name="description" content="The Bear and Bull Index provides a comprehensive solution to the challenges faced in the cryptocurrency market. Through LunarCrush’s AI-driven social insights, simplified analysis, and community engagement, it empowers investors to make informed decisions, navigate market volatility, and stay ahead in the ever-evolving world of cryptocurrencies." />
+                <link rel='icon' href='/assets/images/favicon.ico' />
+                <meta
+                  name='description'
+                  content='The Bear and Bull Index provides a comprehensive solution to the challenges faced in the cryptocurrency market. Through LunarCrush’s AI-driven social insights, simplified analysis, and community engagement, it empowers investors to make informed decisions, navigate market volatility, and stay ahead in the ever-evolving world of cryptocurrencies.'
+                />
                 <title>Bear and Bull Index for Crypto</title>
               </Head>
               <ThemeProvider theme={theme}>

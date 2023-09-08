@@ -176,7 +176,7 @@ const Claim = (props) => {
           {points === null ? (
             <PacmanLoader
               color={"#F5900C"}
-              loading={points === null ? true : false}
+              loading={true}
               cssOverride={override}
               size={28}
               aria-label='Loading Spinner'
@@ -274,9 +274,9 @@ const Claim = (props) => {
             </div>
           )}
         </div>
-        {/* <b>
+        <b>
           <BackToTopButton />
-        </b> */}
+        </b>
       </div>
       <Footer />
     </div>
