@@ -215,7 +215,7 @@ export default function Home() {
                 <div className='flex w-[80vw] h-full justify-center items-center'>
                   <Charts
                     height={mobile ? 400 : 280}
-                    chartData={data.chartData}
+                    chartData={data?.chartData}
                   />
                 </div>
               </InsightsCard>
@@ -236,11 +236,11 @@ export default function Home() {
                 <div className='flex flex-col justify-around w-full  items-center h-full'>
                   <div className='h-[40%] flex flex-col justify-around w-[60%]'>
                     <p className='w-full text-center text-[20px] font-[800] text-[#04bd64ff]'>
-                      {data.BTD}%
+                      {data?.BTD}%
                     </p>
                     <div className='bg-gray-700 w-full  h-[30%]'>
                       <motion.div
-                        animate={{ width: `${data.BTD}%` }}
+                        animate={{ width: `${data?.BTD}%` }}
                         style={{ width: `${0}%` }}
                         transition={{ duration: 1 }}
                         className='bg-[#04bd64ff] h-full'
@@ -252,11 +252,11 @@ export default function Home() {
                   </div>
                   <div className='h-[40%] flex flex-col justify-around w-[60%]'>
                     <p className='w-full text-center text-[20px] font-[800] text-[#c0041dff]'>
-                      {data.STP}%
+                      {data?.STP}%
                     </p>
                     <div className='bg-gray-700 w-full h-[30%]'>
                       <motion.div
-                        animate={{ width: `${data.STP}%` }}
+                        animate={{ width: `${data?.STP}%` }}
                         style={{ width: `${0}%` }}
                         transition={{ duration: 1 }}
                         className='bg-[#c0041dff] h-full'
@@ -281,7 +281,7 @@ export default function Home() {
               tooltip='Market Sentiment provides an insight into the prevailing emotions and attitudes within the crypto market. This sentiment is often influenced by discussions and interactions on social media platforms. It reflects moments of fear, optimism, skepticism, or enthusiasm that traders and investors express online.'
               text='Market Sentiment'
             >
-              <MarketSentiment sentiment={data.sentiment} />
+              <MarketSentiment sentiment={data?.sentiment} />
             </InsightsCard>
           </div>
 

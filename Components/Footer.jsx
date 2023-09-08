@@ -7,8 +7,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 import ArticleIcon from "@mui/icons-material/Article";
 import QuizIcon from "@mui/icons-material/Quiz";
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
-import { motion, stagger } from "framer-motion";
+import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
+import { motion } from "framer-motion";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
@@ -251,7 +251,7 @@ const Footer = () => {
             href='https://twitter.com/BandBindex'
             style={{ background: "#33383b" }}
             target='_blank'
-            rel='noopener noreferrer'            
+            rel='noopener noreferrer'
           >
             <TwitterIcon />
           </a>
@@ -259,7 +259,7 @@ const Footer = () => {
             href='https://t.me/bandbindex_official'
             style={{ background: "#33383b" }}
             target='_blank'
-            rel='noopener noreferrer'            
+            rel='noopener noreferrer'
           >
             <TelegramIcon />
           </a>
@@ -267,15 +267,15 @@ const Footer = () => {
             href='https://discord.gg/gExxutNThJ'
             style={{ background: "#33383b" }}
             target='_blank'
-            rel='noopener noreferrer'            
+            rel='noopener noreferrer'
           >
             <ForumOutlinedIcon />
-          </a>          
+          </a>
           <a
             href='https://www.linkedin.com/company/bandbindex/'
             style={{ background: "#33383b" }}
             target='_blank'
-            rel='noopener noreferrer'            
+            rel='noopener noreferrer'
           >
             <LinkedInIcon />
           </a>
@@ -283,7 +283,7 @@ const Footer = () => {
             href='https://github.com/LiquidityApe/BandBindex'
             style={{ background: "#33383b" }}
             target='_blank'
-            rel='noopener noreferrer'            
+            rel='noopener noreferrer'
           >
             <GitHubIcon />
           </a>
