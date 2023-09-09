@@ -228,7 +228,7 @@ const Claim = (props) => {
 
                 <button
                   onClick={onClaim}
-                  // disabled={Claimed}
+                  disabled={Claimed}
                   className={`w-full py-2 flex justify-center items-center rounded ${colorTheme2} ${textTheme2} disabled:bg-gray-500`}
                 >
                   {Claimed ? (
