@@ -27,15 +27,14 @@ export default async function (req, res) {
       // Check if lastClaim exists and is a valid date
       if (result.lastClaim && !isNaN(new Date(result.lastClaim).getTime())) {
         lastClaimDate = new Date(result.lastClaim);
+        // Check if more than 24 hours have passed since the last claim
+        let diffInHours = Math.abs(now - lastClaimDate) / (1000 * 60 * 60);
+        if (diffInHours > 24) {
+          result.dailyClaim = 5;
+        }
       } else {
         // If lastClaim doesn't exist or isn't a valid date, set lastClaimDate to now and reset dailyClaim to 10
         lastClaimDate = now;
-        result.dailyClaim = 5;
-      }
-
-      // Check if more than 24 hours have passed since the last claim
-      let diffInHours = Math.abs(now - lastClaimDate) / (1000 * 60 * 60);
-      if (diffInHours > 24) {
         result.dailyClaim = 5;
       }
 

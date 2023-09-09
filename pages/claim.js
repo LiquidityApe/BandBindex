@@ -120,7 +120,7 @@ const Claim = (props) => {
     if (!points) {
       updatePoints();
     }
-  }, [isOpen, User]);
+  }, [isOpen, User, points]);
 
   // FUNCTIONS;
   const sendPoints = async (address, points) => {
@@ -169,10 +169,10 @@ const Claim = (props) => {
             </a>
           </div>
         </motion.h1>
-        <div className='relative top-[2vh]'>
+        <div className='relative scale-90 s:scale-100  top-[2vh] mb-[4vh]'>
           <CountdownToLaunch />
         </div>
-        <div className='px-5  relative bottom-[6vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
+        <div className='px-5  relative bottom-[0vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
           {points === null ? (
             <PacmanLoader
               color={"#F5900C"}
@@ -228,7 +228,7 @@ const Claim = (props) => {
 
                 <button
                   onClick={onClaim}
-                  disabled={Claimed}
+                  // disabled={Claimed}
                   className={`w-full py-2 flex justify-center items-center rounded ${colorTheme2} ${textTheme2} disabled:bg-gray-500`}
                 >
                   {Claimed ? (
@@ -243,7 +243,7 @@ const Claim = (props) => {
                 <SlideIn
                   isOpen={isOpen}
                   onClose={() => {
-                    // updatePoints();
+                    updatePoints();
                     setIsOpen(false);
                   }}
                 />

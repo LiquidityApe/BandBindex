@@ -161,7 +161,7 @@ const Navbar = ({ children }) => {
             <motion.ul
               className={`${
                 theme ? "bg-[#0A0D0D]" : "bg-slate-300"
-              } nav-menu md:w-[65vw]`}
+              } nav-menu md:w-[75vw]`}
               id={showmenu ? "mobile" : "hide"}
             >
               <div className='md:flex md:justify-between w-[60%]'>
