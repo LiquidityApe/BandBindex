@@ -118,12 +118,7 @@ export default function Home() {
       <div className={textTheme}>
         <div className={` ${colorTheme} relative flex-1 flex flex-col`}>
           <div className='flex flex-row items-center h-[100vh] justify-center'>
-            <motion.div
-              initial={{ x: -200 }}
-              transition={{ duration: 8 }}
-              animate={{ x: 100 }}
-              className='max-w-max'
-            >
+            <div>
               <PacmanLoader
                 color={"#F5900C"}
                 loading={true}
@@ -132,7 +127,7 @@ export default function Home() {
                 aria-label='Loading Spinner'
                 data-testid='loader'
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -375,11 +370,11 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps(context) {
-  return {
-    redirect: {
-      destination: "/claim", // specify your desired path here
-      permanent: false,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   return {
+//     redirect: {
+//       destination: "/claim", // specify your desired path here
+//       permanent: false,
+//     },
+//   };
+// }
