@@ -76,8 +76,19 @@ const FAQ = () => {
     },
     {
       question: "What is the process for obtaining additional insights?",
-      answer:
-        "We strongly recommend LunarCrush for comprehensive additional social insights.",
+      answer: (
+        <>
+        For comprehensive additional social insights, we strongly recommend:{" "}
+          <a
+            href='https://lunarcrush.com/'
+            target='_blank'
+            className='underline hover:text-Gold'
+            rel='noopener noreferrer'
+          >
+            LunarCrush
+          </a>
+        </>
+      ),      
     },
     {
       question: "Why is social insight important for crypto trading?",
