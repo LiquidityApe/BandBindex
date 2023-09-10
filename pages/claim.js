@@ -145,7 +145,7 @@ const Claim = (props) => {
   return (
     <div className={textTheme}>
       <div
-        className={` ${colorTheme} relative min-h-screen flex  justify-around flex-col`}
+        className={` ${colorTheme} relative min-h-screen flex  justify-center flex-col`}
       >
         <motion.h1
           initial={{ scale: [0], rotate: [0] }}
@@ -169,9 +169,9 @@ const Claim = (props) => {
             </a>
           </div>
         </motion.h1>
-        <div className='relative scale-90 s:scale-100  top-[2vh] mb-[4vh]'>
+        {/* <div className='relative scale-90 s:scale-100  top-[2vh] mb-[4vh]'>
           <CountdownToLaunch />
-        </div>
+        </div> */}
         <div className='px-5  relative bottom-[0vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
           {points === null ? (
             <PacmanLoader
