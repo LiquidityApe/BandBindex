@@ -126,8 +126,8 @@ const Charts = ({ chartData, height }) => {
   };
 
   return (
-    <div className='w-80 md:w-96  flex justify-center'>
-      <Line data={data} height={height} options={options} />
+    <div className='max-w-full'>
+      <Line data={data} width={400} height={height} options={options} />
     </div>
   );
 };
