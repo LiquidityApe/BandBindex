@@ -123,7 +123,7 @@ export default function Home() {
                 color={"#F5900C"}
                 loading={true}
                 cssOverride={override}
-                size={25}
+                size={14}
                 aria-label='Loading Spinner'
                 data-testid='loader'
               />
