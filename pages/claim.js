@@ -178,7 +178,7 @@ const Claim = (props) => {
               color={"#F5900C"}
               loading={true}
               cssOverride={override}
-              size={14}
+              size={28}
               aria-label='Loading Spinner'
               data-testid='loader'
             />

@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-const CACHE_KEY = "bandbindex_data_cache";
-const CACHE_LIFETIME = 3600000; // 1 hour in milliseconds
 
 const useDataFetching = () => {
   const [data, setData] = useState({
@@ -26,14 +24,6 @@ const useDataFetching = () => {
 
     const fetchData = async () => {
       try {
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        const now = Date.now();
-
-        if (cachedData && now - cachedData.timestamp <= CACHE_LIFETIME) {
-          setData(cachedData.data);
-          return; // Use cached data and don't fetch if it's still fresh
-        }
-
         const chartDataRes = await fetch(`${baseUrl}/api/chart`);
         const sheetDataRes = await fetch(`${baseUrl}/api/sheet`);
         const dipDataRes = await fetch(`${baseUrl}/api/dip`);
@@ -62,26 +52,6 @@ const useDataFetching = () => {
           lastweek: sheetData.data.lastweek,
           lastMonth: sheetData.data.lastMonth,
         });
-
-        // Cache the fetched data with a timestamp
-        localStorage.setItem(
-          CACHE_KEY,
-          JSON.stringify({
-            data: {
-              coin: { name: lunrData.name, symbol: lunrData.symbol },
-              sentiment: dipData.data.sentiment,
-              STP: dipData.data.STP,
-              BTD: dipData.data.BTD,
-              chartData: chartData.data,
-              yesterday: sheetData.data.yesterday,
-              today: sheetData.data.today,
-              lastweek: sheetData.data.lastweek,
-              lastMonth: sheetData.data.lastMonth,
-              // ... rest of your data
-            },
-            timestamp: now,
-          })
-        );
       } catch (err) {
         setError(err);
       } finally {
