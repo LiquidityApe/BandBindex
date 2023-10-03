@@ -256,7 +256,7 @@ const Footer = () => {
             <TwitterIcon />
           </a>
           <a
-            href='https://t.me/bandbindex_official'
+            href='https://t.me/bandbindex_chat'
             style={{ background: "#33383b" }}
             target='_blank'
             rel='noopener noreferrer'
