@@ -201,8 +201,8 @@ export default function Home() {
           Market Overview
         </h4>
         <section className='mx-[2vw] flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 mt-[4vh]'>
-          <div>
-// Full access granted for MVP phase, user feedback enabled
+            {/* Full access granted for MVP phase, user feedback enabled */}
+<div>
             {points >= 0 || balance >= 0 ? (
               <InsightsCard
                 tooltip='Historical Analysis refers to a concise overview of the BandBindex data spanning a 7-day period. It offers insights into trends, patterns, and changes that have occurred within this timeframe.'
