@@ -10,8 +10,6 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import OutsideClickHandler from "react-outside-click-handler";
 import Swal from "sweetalert";
-
-// import { ethers } from 'ethers';
 import Image from "next/image";
 import { setTheme } from "@/store/reducers/Theme";
 import { Web3Button } from "@web3modal/react";
@@ -24,7 +22,6 @@ const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
   const dispatch = useDispatch();
   const { User, token } = useSelector((state) => state.App);
-  // const textTheme = theme ? "text-slate-950" : "text-slate-400";
   const { theme } = useSelector((state) => state.Theme);
   const backgroundTheme = theme ? "bg-slate-50" : "bg-[#0A0D0D]";
   const navbarRef = useRef(null);
@@ -49,6 +46,7 @@ const Navbar = ({ children }) => {
     },
     closeOnClickOutside: false, // Prevent closing on clicking outside the dialog
   };
+
   const claimConfig = {
     title: "Login ",
     text: "Connect your wallet to claim $INDEX ",
@@ -79,17 +77,9 @@ const Navbar = ({ children }) => {
         ? "https://bandbindex.com/"
         : "http://localhost:3000";
     try {
-      const response = await axios.post(
-        `${baseUrl}/api/wallet`,
-        {
-          address: address,
-        }
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        // }
-      );
+      const response = await axios.post(`${baseUrl}/api/wallet`, {
+        address: address,
+      });
       console.log(response.data); // { msg: "Wallet inserted successfully" }
     } catch (error) {
       console.error("Error sending wallet address:", error);
@@ -119,7 +109,6 @@ const Navbar = ({ children }) => {
     >
       <div ref={navbarRef} className={backgroundTheme}>
         <nav
-          // style={{ backgroundColor: theme ? "black" : "white" }}
           className={`navbar ${
             theme ? "bg-[#0A0D0D]" : "bg-slate-300"
           } px-[1vw] sticky top-0  `}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { boxDays } from "../data/Days";
@@ -6,6 +6,7 @@ import Box from "../Components/Box";
 import { TiTime } from "react-icons/ti";
 import SlideIn from "../Components/SlideIn";
 import { useSelector, useDispatch } from "react-redux";
+import Swal from "sweetalert";
 import {
   setClaimed,
   setDailyClaim,
@@ -19,6 +20,8 @@ import Footer from "@/Components/Footer";
 import BackToTopButton from "@/Components/BackToTopButton";
 import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
 import CountdownToLaunch from "@/Components/CountdownToLaunch";
+import { withRouter } from "next/router";
+import Link from "next/link";
 
 const Claim = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +30,6 @@ const Claim = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [points, setPoints] = useState(null);
   const [totalLeft, setTotalLeft] = useState(null);
-
   const [lastClaimed, setLastClaimed] = useState(null);
   const [dailyClaimed, setDailyClaimed] = useState(null);
   const { theme } = useSelector((state) => state.Theme);
@@ -43,6 +45,21 @@ const Claim = (props) => {
     display: "block",
     margin: "0 auto",
     borderColor: "red",
+  };
+
+  const claimConfig = {
+    title: "Login ",
+    text: "Connect your wallet to claim $INDEX ",
+    icon: "info",
+    button: {
+      text: "Got it",
+      className: "SweetAlertButton", // Add your custom class name here
+    },
+    closeOnClickOutside: false, // Prevent closing on clicking outside the dialog
+  };
+
+  const handleClaim = () => {
+    Swal(claimConfig);
   };
 
   // UseEffect
@@ -174,14 +191,7 @@ const Claim = (props) => {
         </div> */}
         <div className='px-5  relative bottom-[0vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
           {points === null ? (
-            <PacmanLoader
-              color={"#F5900C"}
-              loading={true}
-              cssOverride={override}
-              size={14}
-              aria-label='Loading Spinner'
-              data-testid='loader'
-            />
+            handleClaim()
           ) : (
             <div className='max-w-max px-5 mx-auto  flex flex-col items-center'>
               <motion.h1
@@ -283,4 +293,4 @@ const Claim = (props) => {
   );
 };
 
-export default Claim;
+export default withRouter(Claim);

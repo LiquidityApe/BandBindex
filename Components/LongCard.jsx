@@ -84,8 +84,8 @@ export default function LongCard({ title }) {
         crypto market. These data sources include:
         <br />
         <br />
-        <b>1. LunarCrush:</b> The primary data source for the Bear
-        and Bull Index,{" "}
+        <b>1. LunarCrush:</b> The primary data source for the Bear and Bull
+        Index,{" "}
         <a
           href='https://lunarcrush.com/'
           target='_blank'
