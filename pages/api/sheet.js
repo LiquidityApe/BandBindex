@@ -28,29 +28,29 @@ export default async function (req, res) {
 
       const lastweekSAS = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J9",
+        range: "Data Point!L9",
       };
       const lastMonthSAS = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J10",
+        range: "Data Point!L10",
       };
 
       const lastweekMSA = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J15",
+        range: "Data Point!L15",
       };
       const lastMonthMSA = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J16",
+        range: "Data Point!L16",
       };
 
       const lastweekRSI = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J21",
+        range: "Data Point!L21",
       };
       const lastMonthRSI = {
         spreadsheetId: "11sscuZ3Ylgp7qDCnDJYF8qcO5A4ZIxW0xC3e-3f42qs",
-        range: "Data Point!J22",
+        range: "Data Point!L22",
       };
 
       const responses = await Promise.all([
