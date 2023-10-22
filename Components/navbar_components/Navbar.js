@@ -255,15 +255,7 @@ const Navbar = ({ children }) => {
                     )}
                   </i>
                 </div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  transition={{ duration: 1 }}
-                >
-                  <Web3Button balance='hide' />
-                </motion.div>
+                <Web3Button balance='hide' />
               </div>
             </motion.ul>
           </menu>

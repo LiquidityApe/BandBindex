@@ -33,7 +33,8 @@ const options = {
 export default ({ sentiment }) => {
   const { theme } = useSelector((state) => state.Theme);
   const textTheme = theme ? "text-slate-950" : "text-slate-400";
-  const data = {
+// Defined Fear (-100 Hope), reverse value Hopeful as sentiment
+const data = {
      labels: ["Hope", "Fear"],
     datasets: [
       {
