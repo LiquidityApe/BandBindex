@@ -59,7 +59,11 @@ const Claim = (props) => {
   };
 
   const handleClaim = () => {
-    Swal(claimConfig);
+    if (User === "") {
+      Swal(claimConfig);
+    } else {
+      return;
+    }
   };
 
   // UseEffect
