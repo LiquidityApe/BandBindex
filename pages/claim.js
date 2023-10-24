@@ -190,7 +190,7 @@ const Claim = (props) => {
           <CountdownToLaunch />
         </div> */}
         <div className='px-5  relative bottom-[0vh] s:bottom-[6vh] min-h-[60vh] flex items-center'>
-          {points === null ? (
+          {points === null && User.length < 5 ? (
             handleClaim()
           ) : (
             <div className='max-w-max px-5 mx-auto  flex flex-col items-center'>
